@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/19 15:51:44 by rolee            ###   ########.fr       */
+/*   Updated: 2023/06/19 18:53:12 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,52 @@ char **set_map(int fd)
 	return (map);
 }
 
+t_player	make_player(int x, int y, char dir)
+{
+	t_player player;
+	const int dx[4] = {0, 0, -1, 1};
+	const int dy[4] = {1, -1, 0, 0};
+	const char	dd[4] = {'N', 'S', 'W', 'E'};
+
+	player.posX = x + 0.5;
+	player.posY = y + 0.5;
+	printf("posX: %f, posY: %f\n", player.posX, player.posY);
+	int i = 0;
+	while (i < 4)
+	{
+		if (dir == dd[i])
+		{
+			player.planeX = dx[i];
+			player.planeY = dy[i];
+			break ;
+		}
+		i++;
+	}
+	return (player);
+}
+
+void	set_player(t_info *info)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (info->map[i])
+	{
+		j = 0;
+		while (info->map[i][j])
+		{
+			if (info->map[i][j] == 'N' || info->map[i][j] == 'S' || info->map[i][j] == 'W' || info->map[i][j] == 'E')
+			{
+				info->player = make_player(i, j, info->map[i][j]);
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 t_info set_info(char *path)
 {
 	t_info info;
@@ -120,6 +166,7 @@ t_info set_info(char *path)
 			return info;
 	}
 	info.map = set_map(fd);
+	set_player(&info);
 	return (info);
 }
 
@@ -127,11 +174,6 @@ void	display_map(t_info *info)
 {
 	int		i;
 	int		j;
-	// int		w;
-	// int		h;
-
-	// void *player;
-	// player = mlx_xpm_file_to_image(info->mlx, "/Users/rolee/Desktop/cub3d/so_long/textures/player_down_0.xpm", &w, &h);
 	
 	i = -1;
 	while (info->map[++i])
@@ -152,6 +194,29 @@ void	display_map(t_info *info)
 	}
 }
 
+void	display_player(t_info *info)
+{
+	int hit = 0;
+	double	nowX;
+	double	nowY;
+	double	distX = 0;
+	double	distY = 0;
+	int color = 0x00FF0000;
+
+	nowX = info->player.posX;
+	nowY = info->player.posY;
+	while (hit == 0)
+	{
+		mlx_pixel_put(info->mlx, info->win, lround(nowX), lround(nowY), color);
+		nowX += info->player.planeX;
+		distX += info->player.planeX;
+		nowY += info->player.planeY;
+		distY += info->player.planeY;
+		if (info->map[lround(nowY)][lround(nowX)] == '1')
+			hit = 1;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_info info;
@@ -162,6 +227,7 @@ int	main(int argc, char *argv[])
 	info.win = mlx_new_window(info.mlx, \
 				1000, 2000, "so_long");
 	display_map(&info);
+	display_player(&info);
 	mlx_loop(info.mlx);
 	return (0);
 }
