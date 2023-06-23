@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/19 18:37:30 by rolee            ###   ########.fr       */
+/*   Updated: 2023/06/23 20:24:41 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,10 @@ typedef struct s_info
 	int			c_color[3];
 	t_player	player;
 }	t_info;
+
+t_info	set_info(char *path);
+char	**set_map(int fd);
+int 	put_texture_info(t_info *info, char *buffer);
+void	set_player(t_info *info);
 
 #endif
