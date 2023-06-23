@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/23 20:24:41 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:38:37 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ char	**set_map(int fd);
 int 	put_texture_info(t_info *info, char *buffer);
 void	set_player(t_info *info);
 
+void bresenham(t_info *info, int fromX, int fromY, int toX, int toY);
 #endif
