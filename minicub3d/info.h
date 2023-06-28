@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/28 13:14:05 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/28 18:03:31 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,17 @@
 # define KEY_D 2
 # define KEY_ESC 53
 # define CLOSE_BUTTON 17
+# define WIDTH 2000
+# define HEIGHT 1000
+# define X 0
+# define Y 1
+# define POV 1
 
 typedef struct s_player
 {
-	double posX;
-	double posY;
-	double planeX;
-	double planeY;
+	double pos[2];
+	double dir[2];
+	double plane[2];
 } t_player;
 
 typedef struct s_draw
@@ -51,6 +55,16 @@ typedef struct s_draw
 	int df_2;
 }	t_draw;
 
+typedef struct s_ray
+{
+	double	ray_dir[2];
+	int		map[2];
+	int		step[2];
+	int		delta_dist[2];
+	int		side_dist[2];
+	int		side;
+}	t_ray;
+
 typedef struct s_info
 {
 	char		**map;
@@ -60,6 +74,8 @@ typedef struct s_info
 	void		*so_texture;
 	void		*we_texture;
 	void		*ea_texture;
+	int			width;
+	int			height;
 	int			f_color[3];
 	int			c_color[3];
 	t_player	player;
@@ -72,5 +88,8 @@ void	set_player(t_info *info);
 
 void bresenham(t_info *info, t_draw dr);
 t_draw	make_dr_info(int fromX, int fromY, int toX, int toY);
+int	get_line_height(t_info *info, t_ray *ray);
+
+t_ray	set_ray(t_info *info, int x);
 
 #endif

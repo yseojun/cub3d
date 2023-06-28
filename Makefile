@@ -5,7 +5,9 @@ set_info.c \
 set_info_map.c \
 set_info_player.c \
 bresenham.c \
-make_dr_info.c
+make_dr_info.c \
+get_line_height.c \
+set_ray.c
 BONUS_SRCS = 
 OBJS = $(addprefix minicub3d/, $(SRCS:.c=.o))\
 	$(GNL:.c=.o)
@@ -21,8 +23,8 @@ FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	make -C libft all
-	make -C mlx all
+	make -C libft all -j6
+	make -C mlx all -j6
 	$(CC) $(FLAGS) $(OBJS) libft/libft.a -Lmlx -lmlx -framework OpenGL -framework Appkit -o $@
 
 %.o: %.c

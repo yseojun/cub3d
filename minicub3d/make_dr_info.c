@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:10:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/06/28 13:23:09 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:23:10 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_draw	make_dr_info(int fromX, int fromY, int toX, int toY)
 	new.dy = abs(toY - fromY);
 	new.df_1 = 2 * new.dy;
 	new.df_2 = 2 * (new.dy - new.dx);
-	if (new.dx && ((new.dy / new.dx <= 1 && fromX > toX)
-		|| (new.dy / new.dx > 1 && fromY > toY)))
+	if (((!new.dx || new.dy / new.dx > 1) && fromY > toY)
+		|| ((!new.dx || new.dy / new.dx <= 1) && fromX > toX))
 	{
 		new.fromX = toX;
 		new.toX = fromX;
