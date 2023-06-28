@@ -1,6 +1,10 @@
 NAME = cub3d
 
-SRCS = main.c 
+SRCS = main.c \
+set_info.c \
+set_info_map.c \
+set_info_player.c \
+bresenham.c
 BONUS_SRCS = 
 OBJS = $(addprefix minicub3d/, $(SRCS:.c=.o))\
 	$(GNL:.c=.o)
