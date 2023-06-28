@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/23 20:38:37 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:14:05 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,19 @@ typedef struct s_player
 	double planeY;
 } t_player;
 
+typedef struct s_draw
+{
+	int	fromX;
+	int fromY;
+	int	toX;
+	int toY;
+	int dx;
+	int dy;
+	int f;
+	int df_1;
+	int df_2;
+}	t_draw;
+
 typedef struct s_info
 {
 	char		**map;
@@ -57,5 +70,7 @@ char	**set_map(int fd);
 int 	put_texture_info(t_info *info, char *buffer);
 void	set_player(t_info *info);
 
-void bresenham(t_info *info, int fromX, int fromY, int toX, int toY);
+void bresenham(t_info *info, t_draw dr);
+t_draw	make_dr_info(int fromX, int fromY, int toX, int toY);
+
 #endif

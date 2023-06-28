@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/23 20:43:54 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:15:27 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	display_player(t_info *info)
 	double	nowY;
 	double	distX = 0;
 	double	distY = 0;
+	t_draw dr;
 
 	nowX = info->player.posX;
 	nowY = info->player.posY;
@@ -55,7 +56,8 @@ void	display_player(t_info *info)
 		if (info->map[lround(nowY)][lround(nowX)] == '1')
 			hit = 1;
 	}
-	bresenham(info, info->player.posX * 64, info->player.posY * 64, nowX * 64, nowY * 64);
+	dr = make_dr_info(info->player.posX * 64, info->player.posY * 64, nowX * 64, nowY * 64);
+	bresenham(info, dr);
 }
 
 int	main(int argc, char *argv[])

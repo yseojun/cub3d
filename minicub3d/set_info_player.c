@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:36:33 by seojyang          #+#    #+#             */
-/*   Updated: 2023/06/19 19:52:28 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:26:45 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_player	make_player(int x, int y, char dir)
 {
 	t_player player;
 	const int dx[4] = {0, 0, -1, 1};
-	const int dy[4] = {1, -1, 0, 0};
+	const int dy[4] = {-1, 1, 0, 0};
 	const char	dd[4] = {'N', 'S', 'W', 'E'};
 	int i = 0;
 

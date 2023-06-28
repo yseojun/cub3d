@@ -1,46 +1,63 @@
 #include "info.h"
 
-void bresenham(t_info *info, int fromX, int fromY, int toX, int toY)
+static void	draw_x(t_info *info, t_draw dr)
 {
-	int dx;
-	int dy;
 	int x;
 	int y;
-	int color = 0x00FF0000;
+	int dy;
+	int f;
+ 
+	x = dr.fromX;
+	y = dr.fromY;
+	f = 2 * dr.dy - dr.dx;
+	dy = 1;
+	if (dr.fromY > dr.toY)
+		dy = -1;
+	while (x <= dr.toX)
+	{
+		mlx_pixel_put(info->mlx, info->win, x, y, 0xFF0000);
+		if (!dr.dy || f < 0)
+			f += dr.df_1;
+		else
+		{
+			y += dy;
+			f += dr.df_2;
+		}
+		x++;
+	}
+}
 
-	dx = abs(toX - fromX);
-	dy = abs(toY - fromY);
-	x = fromX;
-	y = fromY;
-	int f = 2 * dy - dx;
-	int dF_1 = 2 * dy;
-	int dF_2 = 2 * (dy - dx);
-	if (dx && dy / dx <= 1)
+static void	draw_y(t_info *info, t_draw dr)
+{
+	int x;
+	int y;
+	int dx;
+	int f;
+ 
+	x = dr.fromX;
+	y = dr.fromY;
+	f = 2 * dr.dy - dr.dx;
+	dx = 1;
+	if (dr.fromX > dr.toX)
+		dx = -1;
+	while (y <= dr.toY)
 	{
-		for (; x <= toX; x++)
+		mlx_pixel_put(info->mlx, info->win, x, y, 0xFF0000);
+		if (!dr.dx || f < 0)
+			f += dr.df_1;
+		else
 		{
-			mlx_pixel_put(info->mlx, info->win, x, y, color);
-			if (f < 0)
-				f += dF_1;
-			else
-			{
-				y++;
-				f += dF_2;
-			}
+			x += dx;
+			f += dr.df_2;
 		}
+		y++;
 	}
+}
+
+void bresenham(t_info *info, t_draw dr)
+{
+	if (dr.dx && dr.dy / dr.dx <= 1)
+		draw_x(info, dr);
 	else
-	{
-		for (; y <= toY; y++)
-		{
-			mlx_pixel_put(info->mlx, info->win, x, y, color);
-			if (f < 0 || dx == 0)
-				f += dF_1;
-			else
-			{
-				x++;
-				f += dF_2;
-			}
-		}
-	}
+		draw_y(info, dr);
 }
