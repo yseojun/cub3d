@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:43:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/06/28 18:05:32 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:33:34 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ int	get_line_height(t_info *info, t_ray *ray)
 			hit = 1;
 	}
 	if (ray->side == X)
+	{
+		printf("side : X\n");
 		return ((int)(HEIGHT / (ray->map[X] - info->player.pos[X] + (1 - ray->step[X]) / 2) / ray->ray_dir[X]));
+	}
 	else
+	{
+		printf("side : Y\n");
 		return ((int)(HEIGHT / (ray->map[Y] - info->player.pos[Y] + (1 - ray->step[Y]) / 2) / ray->ray_dir[Y]));
+	}
 }

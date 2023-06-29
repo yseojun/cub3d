@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/28 18:03:56 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:40:57 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	display_3d(t_info *info)
 	{	
 		ray = set_ray(info, x);
 		line_height = get_line_height(info, &ray);
+		printf("x: %d, h: %d ", x, line_height);
 		draw_line(info, &ray, x, line_height);
 		x++;
 	}

@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:36:33 by seojyang          #+#    #+#             */
-/*   Updated: 2023/06/28 16:31:43 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:39:01 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	set_player(t_info *info)
 			if (info->map[i][j] == 'N' || info->map[i][j] == 'S'
 				|| info->map[i][j] == 'W' || info->map[i][j] == 'E')
 			{
-				info->player = make_player(i, j, info->map[i][j]);
+				info->player = make_player(j, i, info->map[i][j]);
 				return ;
 			}
 			j++;
