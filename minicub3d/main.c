@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/29 12:52:21 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/29 17:57:22 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,70 @@ void	draw_line(t_info *info, t_ray *ray, int x, int line_height)
 	bresenham(info, dr);
 }
 
+int	get_directrion(t_ray *ray)
+{
+	if (ray->side == X)
+	{
+		if (ray->ray_dir[X] > 0)
+			return (W);
+		else
+			return (E);
+	}
+	else
+	{
+		if (ray->ray_dir[Y] > 0)
+			return (N);
+		else
+			return (S);
+	}
+}
+
+int	get_tex_x(t_info *info, int x)
+{
+	double	wall_x;
+
+	if (side == 0)
+		wall_x = 
+}
+
+void	draw_x_frame(t_info *info, t_ray *ray, int x, int line_height)
+{
+	double	step;
+	double	tex_pos;
+	int		tex_y;
+	int		y;
+	char	*dst;
+
+	step = 1.0 * info->texture_h[ray->direction] / line_height;
+	tex_pos = (ray->start - HEIGHT / 2 + line_height / 2) * step;
+	y = ray->start;
+	while (y < ray->end)
+	{
+		tex_y = (int)tex_pos & (info->texture_h[ray->direction] - 1);
+		tex_pos = step;
+		color = texture[ray->direction][info->texture_h[ray->direction]
+			* tex_y + get_tex_x(info, x)];
+		if (ray->side == Y)
+			color = (color >> 1) & 8355711;
+		dst = info->img.addr + y * info->img.line_length
+			+ x * (info->img.bits / 8);
+		*(unsigned int *)dst = color;
+		y++;
+	}
+}
+
+void	set_frame(t_info *info, t_ray *ray, int x, int line_height)
+{
+	ray->start = -line_height / 2 + HEIGHT / 2;
+	if (ray->start < 0)
+		ray->start = 0;
+	ray->end = line_height / 2 + HEIGHT / 2;
+	if (ray->end >= HEIGHT)
+		ray->end = HEIGHT - 1;
+	ray->direction = get_directrion(ray);
+	draw_x_frame(info, ray, x, line_height);
+}
+
 void	display_3d(t_info *info)
 {
 	t_ray	ray;
@@ -91,13 +155,12 @@ void	display_3d(t_info *info)
 	{	
 		ray = set_ray(info, x);
 		line_height = get_line_height(info, &ray);
-		printf("x: %d, h: %d\n", x, line_height);
-		draw_line(info, &ray, x, line_height);
+		// draw_line(info, &ray, x, line_height);
+		set_frame(info, &ray, x, line_height);
 		x++;
 	}
+	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
 }
-
-int a = 0xFF0000;
 
 int	main(int argc, char *argv[])
 {

@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/29 12:54:47 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/29 17:46:35 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@
 # define X 0
 # define Y 1
 # define POV 1
+# define N 0
+# define W 1
+# define S 2
+# define E 3
 
 typedef struct s_player
 {
@@ -63,22 +67,34 @@ typedef struct s_ray
 	double	delta_dist[2];
 	double	side_dist[2];
 	int		side;
+	int		direction;
+	int		start;
+	int		end;
 }	t_ray;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		endian;
+	int		bits;
+	int		line_length;
+}	t_img;
 
 typedef struct s_info
 {
-	char		**map;
-	void		*mlx;
-	void		*win;
-	void		*no_texture;
-	void		*so_texture;
-	void		*we_texture;
-	void		*ea_texture;
-	int			width;
-	int			height;
-	int			f_color[3];
-	int			c_color[3];
-	t_player	player;
+	struct s_img	frame;
+	void			*texture[4];
+	int				texture_h[4];
+	int				texture_w[4];
+	char			**map;
+	void			*mlx;
+	void			*win;
+	int				width;
+	int				height;
+	int				f_color[3];
+	int				c_color[3];
+	t_player		player;
 }	t_info;
 
 t_info	set_info(char *path);
@@ -86,9 +102,9 @@ char	**set_map(int fd);
 int 	put_texture_info(t_info *info, char *buffer);
 void	set_player(t_info *info);
 
-void bresenham(t_info *info, t_draw dr);
+void 	bresenham(t_info *info, t_draw dr);
 t_draw	make_dr_info(int fromX, int fromY, int toX, int toY);
-int	get_line_height(t_info *info, t_ray *ray);
+int		get_line_height(t_info *info, t_ray *ray);
 
 t_ray	set_ray(t_info *info, int x);
 

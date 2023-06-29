@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/06/19 19:49:13 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:59:22 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,20 @@ static void put_color_info(int *color, char *clr)
 int put_texture_info(t_info *info, char *buffer)
 {
 	char	**spl;
-	int		w;
-	int		h;
 
 	spl = ft_split(buffer, ' ');
 	if (!ft_strncmp(spl[0], "NO", 3))
-		info->no_texture = mlx_xpm_file_to_image(info->mlx, spl[1], &w, &h);
-	else if (!ft_strncmp(spl[0], "SO", 3))
-		info->so_texture = mlx_xpm_file_to_image(info->mlx, spl[1], &w, &h);
+		info->texture[N] = mlx_xpm_file_to_image(info->mlx, spl[1], \
+			&texture_w[N], &texture_h[N]);
 	else if (!ft_strncmp(spl[0], "WE", 3))
-		info->we_texture = mlx_xpm_file_to_image(info->mlx, spl[1], &w, &h);
+		info->texture[W] = mlx_xpm_file_to_image(info->mlx, spl[1], \
+			&texture_w[W], &texture_h[W]);
+	else if (!ft_strncmp(spl[0], "SO", 3))
+		info->texture[S] = mlx_xpm_file_to_image(info->mlx, spl[1], \
+			&texture_w[S], &texture_h[S]);
 	else if (!ft_strncmp(spl[0], "EA", 3))
-		info->ea_texture = mlx_xpm_file_to_image(info->mlx, spl[1], &w, &h);
+		info->texture[E] = mlx_xpm_file_to_image(info->mlx, spl[1], \
+			&texture_w[E], &texture_h[E]);
 	else if (!ft_strncmp(spl[0], "F", 2))
 		put_color_info(info->f_color, spl[1]);
 	else if (!ft_strncmp(spl[0], "C", 2))
