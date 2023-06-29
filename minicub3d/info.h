@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/06/28 18:03:31 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:54:47 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct s_ray
 	double	ray_dir[2];
 	int		map[2];
 	int		step[2];
-	int		delta_dist[2];
-	int		side_dist[2];
+	double	delta_dist[2];
+	double	side_dist[2];
 	int		side;
 }	t_ray;
 
