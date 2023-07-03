@@ -1,7 +1,9 @@
 NAME = cub3d
 
 SRCS = main.c \
+utils.c \
 set_info.c \
+set_info_graphic.c \
 set_info_map.c \
 set_info_player.c \
 bresenham.c \

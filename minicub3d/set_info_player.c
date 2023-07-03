@@ -3,45 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_player.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:36:33 by seojyang          #+#    #+#             */
-/*   Updated: 2023/06/29 12:46:36 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:13:08 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 
-static t_player	make_player(int x, int y, char dir)
-{
-	t_player player;
-	const int dx[4] = {0, 0, -1, 1};
-	const int dy[4] = {-1, 1, 0, 0};
-	const char	dd[4] = {'N', 'S', 'W', 'E'};
-	int i;
+static t_player	make_player(int x, int y, char dir);
 
-	player.pos[X] = x + 0.5;
-	player.pos[Y] = y + 0.5;
-	i = 0;
-	while (i < 4)
-	{
-		if (dir == dd[i])
-		{
-			player.dir[X] = dx[i];
-			player.dir[Y] = dy[i];
-			player.plane[X] = -dy[i] * POV;
-			player.plane[Y] = dx[i] * POV;
-			break ;
-		}
-		i++;
-	}
-	return (player);
-}
-
-void	set_player(t_info *info)
+void	set_player_info(t_info *info)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (info->map[i])
@@ -59,4 +35,29 @@ void	set_player(t_info *info)
 		}
 		i++;
 	}
+}
+
+static t_player	make_player(int x, int y, char dir)
+{
+	t_player	player;
+	const int	dxy[2][4] = {{0, 0, -1, 1}, {-1, 1, 0, 0}};
+	const char	dd[4] = {'N', 'S', 'W', 'E'};
+	int			i;
+
+	player.pos[X] = x + 0.5;
+	player.pos[Y] = y + 0.5;
+	i = 0;
+	while (i < 4)
+	{
+		if (dir == dd[i])
+		{
+			player.dir[X] = dxy[X][i];
+			player.dir[Y] = dxy[Y][i];
+			player.plane[X] = -dxy[Y][i] * POV;
+			player.plane[Y] = dxy[X][i] * POV;
+			break ;
+		}
+		i++;
+	}
+	return (player);
 }

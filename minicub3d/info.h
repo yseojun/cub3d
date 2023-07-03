@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 15:13:20 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:17:54 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,23 @@
 
 # define FALSE 0
 # define TRUE 1
+# define SUCCESS 0
+# define FAILURE -1
+
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_ESC 53
 # define CLOSE_BUTTON 17
+
 # define WIDTH 2000
 # define HEIGHT 1000
+
 # define X 0
 # define Y 1
 # define POV 1
+
 # define N 0
 # define W 1
 # define S 2
@@ -88,20 +94,23 @@ typedef struct s_img
 
 typedef struct s_info
 {
-	struct s_img	frame;
-	struct s_img	texture[4];
-	char			**map;
 	void			*mlx;
 	void			*win;
+	char			**map;
+	struct s_img	frame;
+	struct s_img	texture[4];
 	int				f_color[3];
 	int				c_color[3];
 	t_player		player;
 }	t_info;
 
 t_info	set_info(char *path);
-char	**set_map(int fd);
-int 	put_texture_info(t_info *info, char *buffer);
-void	set_player(t_info *info);
+char	**set_map_info(int fd);
+void	set_graphic_info(t_info *info, int fd);
+void	set_player_info(t_info *info);
+
+void	free_str_arr(char **str_arr);
+int		str_arr_len(char **str_arr);
 
 void 	bresenham(t_info *info, t_draw dr);
 t_draw	make_dr_info(int fromX, int fromY, int toX, int toY);

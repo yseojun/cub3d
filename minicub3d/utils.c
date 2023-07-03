@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_info.c                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 17:20:05 by rolee            ###   ########.fr       */
+/*   Created: 2023/07/03 16:41:56 by rolee             #+#    #+#             */
+/*   Updated: 2023/07/03 17:20:46 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 
-t_info	set_info(char *path)
+void	free_str_arr(char **str_arr)
 {
-	t_info	info;
-	int		fd;
+	int	idx;
 
-	info.mlx = mlx_init();
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		exit(EXIT_FAILURE);
-	set_graphic_info(&info, fd);
-	info.map = set_map_info(fd);
-	set_player_info(&info);
-	return (info);
+	if (!str_arr)
+		return ;
+	idx = 0;
+	while (str_arr[idx])
+		free(str_arr[idx++]);
+	free(str_arr);
+}
+
+int	str_arr_len(char **str_arr)
+{
+	int	idx;
+
+	if (!str_arr)
+		return (FAILURE);
+	idx = 0;
+	while (str_arr[idx])
+		idx++;
+	return (idx);
 }
