@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 13:34:54 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/03 15:13:20 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include "../gnl/get_next_line_bonus.h"
 # include "../libft/libft.h"
 
+# define FALSE 0
+# define TRUE 1
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
@@ -62,13 +64,13 @@ typedef struct s_draw
 typedef struct s_ray
 {
 	double	ray_dir[2];
-	int		map[2];
+	int		hit[2];
 	int		step[2];
 	double	delta_dist[2];
 	double	side_dist[2];
 	int		side;
 	double	perpWallDist;
-	int		direction;
+	int		dir;
 	int		start;
 	int		end;
 }	t_ray;
@@ -80,19 +82,17 @@ typedef struct s_img
 	int		endian;
 	int		bits;
 	int		line_length;
+	int		height;
+	int		width;
 }	t_img;
 
 typedef struct s_info
 {
 	struct s_img	frame;
-	void			*texture[4];
-	int				texture_h[4];
-	int				texture_w[4];
+	struct s_img	texture[4];
 	char			**map;
 	void			*mlx;
 	void			*win;
-	int				width;
-	int				height;
 	int				f_color[3];
 	int				c_color[3];
 	t_player		player;

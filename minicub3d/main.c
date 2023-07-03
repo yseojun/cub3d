@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 13:32:45 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/03 15:24:33 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,37 +109,37 @@ int	get_tex_x(t_info *info, t_ray *ray)
 		wall_x = info->player.pos[X] + ray->perpWallDist * ray->ray_dir[X];
 	wall_x -= floor(wall_x);
 
-	tex_x = (int)(wall_x * (double)info->texture_w[ray->direction]);
+	tex_x = (int)(wall_x * (double)info->texture[ray->dir].width);
 	if (ray->side == X && ray->ray_dir[X] > 0)
-		tex_x = info->texture_w[ray->direction] - tex_x - 1;
+		tex_x = info->texture[ray->dir].width - tex_x - 1;
 	if (ray->side == Y && ray->ray_dir[Y] < 0)
-		tex_x = info->texture_w[ray->direction] - tex_x - 1;
+		tex_x = info->texture[ray->dir].width - tex_x - 1;
 	return (tex_x);
 }
 
 void	draw_x_frame(t_info *info, t_ray *ray, int x, int line_height)
 {
-	double	step;
-	double	tex_pos;
-	int		tex_y;
-	int		y;
-	unsigned int color;
-	char	*dst;
+	double			step;
+	double			tex_pos;
+	int				tex_y;
+	int				y;
+	unsigned int	color;
+	// char			*dst;
 
-	step = 1.0 * info->texture_h[ray->direction] / line_height;
+	step = 1.0 * info->texture[ray->dir].height / line_height;
 	tex_pos = (ray->start - HEIGHT / 2 + line_height / 2) * step;
 	y = ray->start;
 	while (y < ray->end)
 	{
-		tex_y = (int)tex_pos & (info->texture_h[ray->direction] - 1);
-		tex_pos = step;
-		color = (unsigned int)info->texture[ray->direction][info->texture_h[ray->direction]
-			* tex_y + get_tex_x(info, ray)];
+		tex_y = (int)tex_pos & (info->texture[ray->dir].height - 1);
+		tex_pos += step;
+		int idx = info->texture[ray->dir].height * tex_y + get_tex_x(info, ray);
+		color = info->texture[ray->dir].addr[idx];
 		if (ray->side == Y)
 			color = (color >> 1) & 8355711;
-		dst = info->frame.addr + y * info->frame.line_length
-			+ x * (info->frame.bits / 8);
-		*(unsigned int *)dst = color;
+		info->frame.addr[y * WIDTH + x] = color;
+		// dst = info->frame.addr + y * info->frame.line_length
+		// 	+ x * (info->frame.bits / 8);
 		y++;
 	}
 }
@@ -152,7 +152,7 @@ void	set_frame(t_info *info, t_ray *ray, int x, int line_height)
 	ray->end = line_height / 2 + HEIGHT / 2;
 	if (ray->end >= HEIGHT)
 		ray->end = HEIGHT - 1;
-	ray->direction = get_directrion(ray);
+	ray->dir = get_directrion(ray);
 	draw_x_frame(info, ray, x, line_height);
 }
 
@@ -163,6 +163,9 @@ void	display_3d(t_info *info)
 	int		line_height;
 
 	x = 0;
+	info->frame.img = mlx_new_image(info->mlx, WIDTH, HEIGHT);
+	info->frame.addr = mlx_get_data_addr(info->frame.img, &info->frame.bits, \
+		&info->frame.line_length, &info->frame.endian);
 	while (x < WIDTH)
 	{	
 		ray = set_ray(info, x);
