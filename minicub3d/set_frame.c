@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:27:47 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 16:57:37 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:31:52 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static int	get_tex_x(t_info *info, t_ray *ray)
 	int		tex_x;
 
 	if (ray->side == X)
-		wall_x = info->player.pos[Y] + ray->perpWallDist * ray->ray_dir[Y];
+		wall_x = info->player.pos[Y] + ray->perp_wall_dist * ray->ray_dir[Y];
 	else
-		wall_x = info->player.pos[X] + ray->perpWallDist * ray->ray_dir[X];
+		wall_x = info->player.pos[X] + ray->perp_wall_dist * ray->ray_dir[X];
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * (double)info->texture[ray->dir].width);
 	if (ray->side == X && ray->ray_dir[X] > 0)
