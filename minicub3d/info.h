@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 17:27:14 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/03 17:32:03 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ typedef struct s_player
 
 typedef struct s_draw
 {
-	int	fromX;
-	int	fromY;
-	int	toX;
-	int	toY;
+	int	from_x;
+	int	from_y;
+	int	to_x;
+	int	to_y;
 	int	dx;
 	int	dy;
 	int	f;
@@ -74,7 +74,7 @@ typedef struct s_ray
 	double	delta_dist[2];
 	double	side_dist[2];
 	int		side;
-	double	perpWallDist;
+	double	perp_wall_dist;
 	int		dir;
 	int		start;
 	int		end;
@@ -120,7 +120,7 @@ void	set_player_info(t_info *info);
 void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);
 
-t_draw	make_dr_info(int fromX, int fromY, int toX, int toY);
+t_draw	make_dr_info(int from_x, int fromY, int to_x, int to_y);
 int		get_line_height(t_info *info, t_ray *ray);
 
 t_ray	set_ray(t_info *info, int x);

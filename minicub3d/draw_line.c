@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:27:06 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 16:34:33 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:34:22 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static void	draw_x(t_info *info, t_draw dr)
 	int	dy;
 	int	f;
 
-	x = dr.fromX;
-	y = dr.fromY;
+	x = dr.from_x;
+	y = dr.from_y;
 	f = 2 * dr.dy - dr.dx;
 	dy = 1;
-	if (dr.fromY > dr.toY)
+	if (dr.from_y > dr.to_y)
 		dy = -1;
-	while (x <= dr.toX)
+	while (x <= dr.to_x)
 	{
 		mlx_pixel_put(info->mlx, info->win, x, y, 0xFF0000);
 		if (!dr.dy || f < 0)
@@ -68,13 +68,13 @@ static void	draw_y(t_info *info, t_draw dr)
 	int	dx;
 	int	f;
 
-	x = dr.fromX;
-	y = dr.fromY;
+	x = dr.from_x;
+	y = dr.from_y;
 	f = 2 * dr.dy - dr.dx;
 	dx = 1;
-	if (dr.fromX > dr.toX)
+	if (dr.from_x > dr.to_x)
 		dx = -1;
-	while (y <= dr.toY)
+	while (y <= dr.to_y)
 	{
 		mlx_pixel_put(info->mlx, info->win, x, y, 0xFF0000);
 		if (!dr.dx || f < 0)
