@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 19:38:30 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/03 19:51:19 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define X 0
 # define Y 1
 # define POV 1
+# define SPEED 100
 
 # define N 0
 # define W 1
@@ -119,6 +120,8 @@ t_info	set_info(char *path);
 char	**set_map_info(int fd);
 void	set_graphic_info(t_info *info, int fd);
 void	set_player_info(t_info *info);
+
+void	set_event(t_info *info);
 
 void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);

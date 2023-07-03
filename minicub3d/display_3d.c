@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   display_3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:25:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 19:42:31 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/03 19:44:25 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 
-static void display_background(t_info *info);
+static void	display_background(t_info *info);
 
 void	display_3d(t_info *info)
 {

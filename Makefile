@@ -11,7 +11,8 @@ get_line_height.c \
 set_ray.c \
 display_3d.c \
 draw_line.c \
-set_frame.c
+set_frame.c \
+set_event.c
 BONUS_SRCS = 
 OBJS = $(addprefix minicub3d/, $(SRCS:.c=.o))\
 	$(GNL:.c=.o)
