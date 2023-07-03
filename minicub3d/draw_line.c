@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:27:06 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 17:31:37 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:34:22 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static void	draw_x(t_info *info, t_draw dr)
 	int	dy;
 	int	f;
 
-	x = dr.fromX;
-	y = dr.fromY;
+	x = dr.from_x;
+	y = dr.from_y;
 	f = 2 * dr.dy - dr.dx;
 	dy = 1;
-	if (dr.fromY > dr.to_y)
+	if (dr.from_y > dr.to_y)
 		dy = -1;
 	while (x <= dr.to_x)
 	{
@@ -68,11 +68,11 @@ static void	draw_y(t_info *info, t_draw dr)
 	int	dx;
 	int	f;
 
-	x = dr.fromX;
-	y = dr.fromY;
+	x = dr.from_x;
+	y = dr.from_y;
 	f = 2 * dr.dy - dr.dx;
 	dx = 1;
-	if (dr.fromX > dr.to_x)
+	if (dr.from_x > dr.to_x)
 		dx = -1;
 	while (y <= dr.to_y)
 	{
