@@ -6,15 +6,14 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 17:17:54 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/03 17:24:20 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INFO_H
 # define INFO_H
 
-#include <stdio.h>
-
+# include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -57,14 +56,14 @@ typedef struct s_player
 typedef struct s_draw
 {
 	int	fromX;
-	int fromY;
+	int	fromY;
 	int	toX;
-	int toY;
-	int dx;
-	int dy;
-	int f;
-	int df_1;
-	int df_2;
+	int	toY;
+	int	dx;
+	int	dy;
+	int	f;
+	int	df_1;
+	int	df_2;
 }	t_draw;
 
 typedef struct s_ray
@@ -92,6 +91,15 @@ typedef struct s_img
 	int		width;
 }	t_img;
 
+typedef struct s_tex_info
+{
+	int		*texture_int;
+	int		tex_x;
+	int		tex_y;
+	double	step;
+	double	tex_pos;
+}	t_tex_info;
+
 typedef struct s_info
 {
 	void			*mlx;
@@ -112,10 +120,13 @@ void	set_player_info(t_info *info);
 void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);
 
-void 	bresenham(t_info *info, t_draw dr);
 t_draw	make_dr_info(int fromX, int fromY, int toX, int toY);
 int		get_line_height(t_info *info, t_ray *ray);
 
 t_ray	set_ray(t_info *info, int x);
+
+void	display_3d(t_info *info);
+
+void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
 
 #endif

@@ -6,15 +6,29 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:43:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 15:13:55 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:17:15 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 
+static void	get_perp_wall_dist(t_info *info, t_ray *ray)
+{
+	if (ray->side == X)
+	{
+		ray->perpWallDist = (ray->hit[X] - info->player.pos[X]
+				+ (1 - ray->step[X]) / 2) / ray->ray_dir[X];
+	}
+	else
+	{
+		ray->perpWallDist = (ray->hit[Y] - info->player.pos[Y]
+				+ (1 - ray->step[Y]) / 2) / ray->ray_dir[Y];
+	}
+}
+
 int	get_line_height(t_info *info, t_ray *ray)
 {
-	int is_hit;
+	int	is_hit;
 
 	is_hit = FALSE;
 	while (!is_hit)
@@ -34,9 +48,6 @@ int	get_line_height(t_info *info, t_ray *ray)
 		if (info->map[ray->hit[Y]][ray->hit[X]] == '1')
 			is_hit = 1;
 	}
-	if (ray->side == X)
-		ray->perpWallDist = (ray->hit[X] - info->player.pos[X] + (1 - ray->step[X]) / 2) / ray->ray_dir[X];
-	else
-		ray->perpWallDist = (ray->hit[Y] - info->player.pos[Y] + (1 - ray->step[Y]) / 2) / ray->ray_dir[Y];
+	get_perp_wall_dist(info, ray);
 	return ((int)(HEIGHT / ray->perpWallDist));
 }
