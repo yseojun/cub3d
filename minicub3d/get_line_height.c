@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_line_height.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:43:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/06/29 12:58:28 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:38:45 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	get_line_height(t_info *info, t_ray *ray)
 			hit = 1;
 	}
 	if (ray->side == X)
-		return ((int)(HEIGHT / ((ray->map[X] - info->player.pos[X] + (1 - ray->step[X]) / 2) / ray->ray_dir[X])));
+		ray->perpWallDist = (ray->map[X] - info->player.pos[X] + (1 - ray->step[X]) / 2) / ray->ray_dir[X];
 	else
-		return ((int)(HEIGHT / ((ray->map[Y] - info->player.pos[Y] + (1 - ray->step[Y]) / 2) / ray->ray_dir[Y])));
+		ray->perpWallDist = (ray->map[Y] - info->player.pos[Y] + (1 - ray->step[Y]) / 2) / ray->ray_dir[Y];
+	return ((int)(HEIGHT / ray->perpWallDist));
 }
