@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 19:55:20 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:58:43 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	move(int keycode, t_info *info)
 		move_x = keycode - 1;
 	info->player.pos[Y] += move_y * SPEED;
 	info->player.pos[X] += move_x * SPEED; // 혹시 뚝뚞 끊기면 어떻게 수정..?
+	// 벽 뚫으면 어떻게..?
 	display_3d(info);
 }
 
@@ -46,13 +47,13 @@ void	move(int keycode, t_info *info)
 
 int	press_key(int keycode, t_info *info)
 {
-	if (keycode == KEY_LEFT_ARROW || keycode == KEY_RIGHT_ARROW)
-		rotate(keycode, info);
-	else if (keycode == KEY_W || keycode == KEY_A
+	if (keycode == KEY_W || keycode == KEY_A
 		|| keycode == KEY_S || keycode == KEY_D)
 		move(keycode, info);
-	else if (keycode == KEY_SPACE)
-		open_door(info);
+	// else if (keycode == KEY_LEFT_ARROW || keycode == KEY_RIGHT_ARROW)
+	// 	rotate(keycode, info);
+	// else if (keycode == KEY_SPACE)
+	// 	open_door(info);
 	return (0);
 }
 

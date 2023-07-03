@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 19:51:19 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:57:48 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define X 0
 # define Y 1
 # define POV 1
-# define SPEED 100
+# define SPEED 0.1
 
 # define N 0
 # define W 1
