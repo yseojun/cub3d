@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:25:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 19:35:00 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/03 19:42:31 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ void	display_3d(t_info *info)
 	mlx_put_image_to_window(info->mlx, info->win, info->frame.img, 0, 0);
 }
 
-int encode_rgb(int color[3])
+int	encode_rgb(int color[3])
 {
 	return (color[0] << 16 | color[1] << 8 | color[2]);
 }
 
-static void display_background(t_info *info)
+static void	display_background(t_info *info)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 	int	*tx;
 
 	tx = (int *)info->frame.addr;
