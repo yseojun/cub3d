@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:25:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 18:54:52 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/03 19:35:00 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void	display_3d(t_info *info)
 	int		line_height;
 
 	x = 0;
-	info->frame.img = mlx_new_image(info->mlx, WIDTH, HEIGHT);
-	info->frame.addr = mlx_get_data_addr(info->frame.img, &info->frame.bits, \
-		&info->frame.line_length, &info->frame.endian);
 	display_background(info);
 	while (x < WIDTH)
 	{
