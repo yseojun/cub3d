@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 17:24:20 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/03 17:27:14 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@
 
 typedef struct s_player
 {
-	double pos[2];
-	double dir[2];
-	double plane[2];
-} t_player;
+	double	pos[2];
+	double	dir[2];
+	double	plane[2];
+}	t_player;
 
 typedef struct s_draw
 {
