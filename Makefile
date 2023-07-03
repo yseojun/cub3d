@@ -4,10 +4,12 @@ SRCS = main.c \
 set_info.c \
 set_info_map.c \
 set_info_player.c \
-bresenham.c \
 make_dr_info.c \
 get_line_height.c \
-set_ray.c
+set_ray.c \
+display_3d.c \
+draw_line.c \
+set_frame.c
 BONUS_SRCS = 
 OBJS = $(addprefix minicub3d/, $(SRCS:.c=.o))\
 	$(GNL:.c=.o)
