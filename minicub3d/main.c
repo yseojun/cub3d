@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 15:24:33 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/03 16:07:52 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,22 +124,24 @@ void	draw_x_frame(t_info *info, t_ray *ray, int x, int line_height)
 	int				tex_y;
 	int				y;
 	unsigned int	color;
-	// char			*dst;
+	char			*dst;
 
 	step = 1.0 * info->texture[ray->dir].height / line_height;
 	tex_pos = (ray->start - HEIGHT / 2 + line_height / 2) * step;
 	y = ray->start;
+	int		*tx = (int *)info->texture[ray->dir].addr;
 	while (y < ray->end)
 	{
 		tex_y = (int)tex_pos & (info->texture[ray->dir].height - 1);
 		tex_pos += step;
 		int idx = info->texture[ray->dir].height * tex_y + get_tex_x(info, ray);
-		color = info->texture[ray->dir].addr[idx];
+		color = tx[idx];
 		if (ray->side == Y)
 			color = (color >> 1) & 8355711;
-		info->frame.addr[y * WIDTH + x] = color;
-		// dst = info->frame.addr + y * info->frame.line_length
-		// 	+ x * (info->frame.bits / 8);
+		// info->frame.addr[y * WIDTH + x] = color;
+		dst = info->frame.addr + y * info->frame.line_length
+			+ x * (info->frame.bits / 8);
+		*(unsigned int *)dst = color;
 		y++;
 	}
 }

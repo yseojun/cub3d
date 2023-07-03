@@ -1,16 +1,16 @@
 NO ./textures/bluestone.xpm
-SO ./textures/eagle.xpm
-WE ./textures/bluestone.xpm
-EA ./textures/bluestone.xpm
+SO ./textures/mossy.xpm
+WE ./textures/greystone.xpm
+EA ./textures/wood.xpm
 
 F 0,0,0
 C 0,0,0
 
 1111111111
-1000001001
-1000001001
-1000001001
-1000100001
+1000000001
+1000000001
+1000001101
+1001001001
 1000000001
 10000N0001
 1111111111
