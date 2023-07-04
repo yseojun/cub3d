@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 13:14:22 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:48:11 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	move(int keycode, t_info *info)
 
 	move_x = 0;
 	move_y = 0;
-	if (keycode == 13 || keycode == 1)
+	if (keycode == KEY_W || keycode == KEY_S)
 		move_y = (keycode - 7) / 6;
 	else
 		move_x = keycode - 1;
@@ -38,19 +38,32 @@ void	move(int keycode, t_info *info)
 	}
 	if (move_x)
 	{
-		dpos_x = info->player.dir[Y] * move_x;
+		dpos_x = -info->player.dir[Y] * move_x;
 		dpos_y = info->player.dir[X] * move_x;
 	}
 	info->player.pos[X] += dpos_x * SPEED;
 	info->player.pos[Y] += dpos_y * SPEED;
 	// 벽 뚫으면 어떻게..?
-	display_3d(info);
 }
 
-// void	rotate(int keycode, t_info *info)
-// {
-	
-// }
+void	rotate(int keycode, t_info *info)
+{
+	double	sign;
+	double	old_dir[2];
+
+	sign = 1;
+	if (keycode == KEY_LEFT_ARROW)
+		sign = -1;
+	old_dir = info->player.dir;
+	info->player.dir[X] = -old_dir[X] * cos(ANGLE * sign)
+		+ old_dir[Y] * sin(ANGLE * sign);
+	info->player.dir[Y] = -old_dir[X] * sin(ANGLE * sign)
+		- old_dir[Y] * cos(ANGLE * sign);
+	info->player.plane[X] = -info->player.plane[X] * cos(ANGLE * sign)
+		+ info->player.plane[Y] * sin(ANGLE * sign);
+	info->player.plane[Y] = -info->player.plane[X] * sin(ANGLE * sign)
+		- info->player.plane[Y] * cos(ANGLE * sign);
+}
 
 // void	open_door(t_info *info)
 // {
@@ -62,10 +75,11 @@ int	press_key(int keycode, t_info *info)
 	if (keycode == KEY_W || keycode == KEY_A
 		|| keycode == KEY_S || keycode == KEY_D)
 		move(keycode, info);
-	// else if (keycode == KEY_LEFT_ARROW || keycode == KEY_RIGHT_ARROW)
-	// 	rotate(keycode, info);
+	else if (keycode == KEY_LEFT_ARROW || keycode == KEY_RIGHT_ARROW)
+		rotate(keycode, info);
 	// else if (keycode == KEY_SPACE)
 	// 	open_door(info);
+	display_3d(info);
 	return (0);
 }
 
