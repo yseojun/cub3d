@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:27:49 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 17:28:28 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/04 17:49:50 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	check_edge(t_info info, int y)
 	if (y == 0 || y == info.map_size[HEI] - 1)
 	{
 		idx = 0;
-		while(info.map[y][idx])
+		while (info.map[y][idx])
 		{
 			if (info.map[y][idx] != '1' && info.map[y][idx] != ' ')
 				exit(EXIT_FAILURE);
@@ -51,7 +51,8 @@ static void	check_edge(t_info info, int y)
 	}
 	if (info.map[y][0] != '1' && info.map[y][0] != ' ')
 		exit(EXIT_FAILURE);
-	if (info.map[y][info.map_size[WID] - 1] != '1' && info.map[y][info.map_size[WID] - 1] != ' ')
+	if (info.map[y][info.map_size[WID] - 1] != '1'
+		&& info.map[y][info.map_size[WID] - 1] != ' ')
 		exit(EXIT_FAILURE);
 }
 

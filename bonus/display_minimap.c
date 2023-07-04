@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:18:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 17:31:39 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:17:49 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,27 @@ static char	get_map_inf(t_info *info, int mini_y, int mini_x)
 		return (info->map[map_y][map_x]);
 }
 
+static void	put_minimap_color(t_info *info, char now, int mini_y, int mini_x)
+{
+	int		*mini;
+
+	mini = (int *)info->minimap.addr;
+	if (now == 0 || now == ' ')
+		mini[mini_y * 200 + mini_x] = 0xCCCCCC;
+	else if (now == '0')
+		mini[mini_y * 200 + mini_x] = 0xCCFFCC;
+	else if (now == '1')
+		mini[mini_y * 200 + mini_x] = 0x003300;
+	else if (now == 'm')
+		mini[mini_y * 200 + mini_x] = 0xFF0000;
+}
+
 void	display_minimap(t_info *info)
 {
 	int		mini_x;
 	int		mini_y;
-	int		*mini;
 	char	now;
 
-	mini = (int *)info->minimap.addr;
 	mini_y = 0;
 	while (mini_y < 200)
 	{
@@ -42,14 +55,7 @@ void	display_minimap(t_info *info)
 		while (mini_x < 200)
 		{				
 			now = get_map_inf(info, mini_y, mini_x);
-			if (now == 0 || now == ' ')
-				mini[mini_y * 200 + mini_x] = 0xCCCCCC;
-			else if (now == '0')
-				mini[mini_y * 200 + mini_x] = 0xCCFFCC;
-			else if (now == '1')
-				mini[mini_y * 200 + mini_x] = 0x003300;
-			else if (now == 'm')
-				mini[mini_y * 200 + mini_x] = 0xFF0000;
+			put_minimap_color(info, now, mini_y, mini_x);
 			mini_x++;
 		}
 		mini_y++;
