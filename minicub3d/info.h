@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 17:22:18 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/04 17:28:46 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct s_info
 
 t_info	set_info(char *path);
 void	set_map_info(t_info *info, int fd);
+void	check_valid_map(t_info info);
 void	set_graphic_info(t_info *info, int fd);
 void	set_player_info(t_info *info);
 
