@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 19:58:43 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:14:22 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int	press_close_button(t_info *info)
 
 void	move(int keycode, t_info *info)
 {
-	int	move_x;
-	int	move_y;
+	double	move_x;
+	double	move_y;
+	double	dpos_x;
+	double	dpos_y;
 
 	move_x = 0;
 	move_y = 0;
@@ -29,8 +31,18 @@ void	move(int keycode, t_info *info)
 		move_y = (keycode - 7) / 6;
 	else
 		move_x = keycode - 1;
-	info->player.pos[Y] += move_y * SPEED;
-	info->player.pos[X] += move_x * SPEED; // 혹시 뚝뚞 끊기면 어떻게 수정..?
+	if (move_y)
+	{
+		dpos_x = info->player.dir[X] * move_y;
+		dpos_y = info->player.dir[Y] * move_y;
+	}
+	if (move_x)
+	{
+		dpos_x = info->player.dir[Y] * move_x;
+		dpos_y = info->player.dir[X] * move_x;
+	}
+	info->player.pos[X] += dpos_x * SPEED;
+	info->player.pos[Y] += dpos_y * SPEED;
 	// 벽 뚫으면 어떻게..?
 	display_3d(info);
 }
