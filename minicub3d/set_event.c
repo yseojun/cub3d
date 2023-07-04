@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 13:48:11 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:12:03 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,45 @@ void	move(int keycode, t_info *info)
 	// 벽 뚫으면 어떻게..?
 }
 
+// void	rotate(int keycode, t_info *info)
+// {
+// 	double	sign;
+// 	double	old_dir[2];
+
+// 	sign = 1;
+// 	if (keycode == KEY_LEFT_ARROW)
+// 		sign = -1;
+// 	old_dir[X] = info->player.dir[X];
+// 	old_dir[Y] = info->player.dir[Y];
+// 	info->player.dir[X] = -old_dir[X] * cos(ANGLE * sign)
+// 		+ old_dir[Y] * sin(ANGLE * sign);
+// 	info->player.dir[Y] = -old_dir[X] * sin(ANGLE * sign)
+// 		- old_dir[Y] * cos(ANGLE * sign);
+// 	info->player.plane[X] = -info->player.plane[X] * cos(ANGLE * sign)
+// 		+ info->player.plane[Y] * sin(ANGLE * sign);
+// 	info->player.plane[Y] = -info->player.plane[X] * sin(ANGLE * sign)
+// 		- info->player.plane[Y] * cos(ANGLE * sign);
+// }
+
 void	rotate(int keycode, t_info *info)
 {
 	double	sign;
-	double	old_dir[2];
+	double	old_dir_x;
+	double	old_plane_x;
 
+	old_dir_x = info->player.dir[X];
+	old_plane_x = info->player.plane[X];
 	sign = 1;
 	if (keycode == KEY_LEFT_ARROW)
 		sign = -1;
-	old_dir = info->player.dir;
-	info->player.dir[X] = -old_dir[X] * cos(ANGLE * sign)
-		+ old_dir[Y] * sin(ANGLE * sign);
-	info->player.dir[Y] = -old_dir[X] * sin(ANGLE * sign)
-		- old_dir[Y] * cos(ANGLE * sign);
-	info->player.plane[X] = -info->player.plane[X] * cos(ANGLE * sign)
-		+ info->player.plane[Y] * sin(ANGLE * sign);
-	info->player.plane[Y] = -info->player.plane[X] * sin(ANGLE * sign)
-		- info->player.plane[Y] * cos(ANGLE * sign);
+	info->player.dir[X] = info->player.dir[X] * cos(ANGLE * sign)
+		- info->player.dir[Y] * sin(ANGLE * sign);
+	info->player.dir[Y] = old_dir_x * sin(ANGLE * sign)
+		+ info->player.dir[Y] * cos(ANGLE * sign);
+	info->player.plane[X] = info->player.plane[X] * cos(ANGLE * sign)
+		- info->player.plane[Y] * sin(ANGLE * sign);
+	info->player.plane[Y] = old_plane_x * sin(ANGLE * sign)
+		+ info->player.plane[Y] * cos(ANGLE * sign);
 }
 
 // void	open_door(t_info *info)
