@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:36:33 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 13:11:24 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:23:08 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	set_player_info(t_info *info)
 				|| info->map[i][j] == 'W' || info->map[i][j] == 'E')
 			{
 				info->player = make_player(j, i, info->map[i][j]);
+				info->map[i][j] = '0';
 				return ;
 			}
 			j++;

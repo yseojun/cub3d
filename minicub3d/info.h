@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 13:35:54 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:23:50 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_info
 	void			*mlx;
 	void			*win;
 	char			**map;
+	int				map_width;
 	struct s_img	frame;
 	struct s_img	texture[4];
 	int				f_color[3];

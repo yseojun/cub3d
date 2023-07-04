@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 14:12:03 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/04 15:22:52 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ void	move(int keycode, t_info *info)
 		dpos_x = -info->player.dir[Y] * move_x;
 		dpos_y = info->player.dir[X] * move_x;
 	}
-	info->player.pos[X] += dpos_x * SPEED;
-	info->player.pos[Y] += dpos_y * SPEED;
-	// 벽 뚫으면 어떻게..?
+	if (info->map[(int)info->player.pos[Y]]\
+		[(int)(info->player.pos[X] + dpos_x * SPEED * 5)] == '0')
+		info->player.pos[X] += dpos_x * SPEED;
+	if (info->map[(int)(info->player.pos[Y] + dpos_y * SPEED * 5)]\
+		[(int)info->player.pos[X]] == '0')
+		info->player.pos[Y] += dpos_y * SPEED;
 }
 
 // void	rotate(int keycode, t_info *info)
