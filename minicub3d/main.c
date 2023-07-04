@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 19:45:28 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:34:01 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ int	main(int argc, char *argv[])
 	info.frame.img = mlx_new_image(info.mlx, WIDTH, HEIGHT);
 	info.frame.addr = mlx_get_data_addr(info.frame.img, &info.frame.bits, \
 		&info.frame.line_length, &info.frame.endian);
+	info.minimap.img = mlx_new_image(info.mlx, 200, 200);
+	info.minimap.addr = mlx_get_data_addr(info.minimap.img, &info.minimap.bits, \
+		&info.minimap.line_length, &info.minimap.endian);
 	display_3d(&info);
+	display_minimap(&info);
 	set_event(&info);
 	mlx_loop(info.mlx);
 	return (0);

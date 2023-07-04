@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 15:22:52 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:02:49 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	press_key(int keycode, t_info *info)
 	// else if (keycode == KEY_SPACE)
 	// 	open_door(info);
 	display_3d(info);
+	display_minimap(info);
 	return (0);
 }
 
