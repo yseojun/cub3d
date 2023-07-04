@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 15:23:50 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:12:05 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 
 # define WIDTH 2000
 # define HEIGHT 1000
+# define MINIMAP_ROOM 18
+# define MINIMAP_DIVIER	2
 
 # define X 0
 # define Y 1
@@ -112,6 +114,7 @@ typedef struct s_info
 	char			**map;
 	int				map_width;
 	struct s_img	frame;
+	struct s_img	minimap;
 	struct s_img	texture[4];
 	int				f_color[3];
 	int				c_color[3];
@@ -136,5 +139,7 @@ t_ray	set_ray(t_info *info, int x);
 void	display_3d(t_info *info);
 
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
+
+void	display_minimap(t_info *info);
 
 #endif

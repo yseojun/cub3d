@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 17:19:29 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/04 16:44:46 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**set_map_info(int fd)
 		temp = get_next_line(fd);
 		if (!temp)
 			exit(EXIT_FAILURE);
-		if (ft_strncmp(map_str, "\n", 2))
+		if (ft_strncmp(temp, "\n", 2))
 			break ;
 		free(temp);
 	}

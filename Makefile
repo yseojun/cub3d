@@ -10,6 +10,7 @@ make_dr_info.c \
 get_line_height.c \
 set_ray.c \
 display_3d.c \
+display_minimap.c \
 draw_line.c \
 set_frame.c \
 set_event.c
