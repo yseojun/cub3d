@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 15:23:50 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:56:14 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@
 
 # define WIDTH 2000
 # define HEIGHT 1000
+
+# define WID 0
+# define HEI 1
 
 # define X 0
 # define Y 1
@@ -110,7 +113,7 @@ typedef struct s_info
 	void			*mlx;
 	void			*win;
 	char			**map;
-	int				map_width;
+	int				map_size[2];
 	struct s_img	frame;
 	struct s_img	texture[4];
 	int				f_color[3];
@@ -119,7 +122,7 @@ typedef struct s_info
 }	t_info;
 
 t_info	set_info(char *path);
-char	**set_map_info(int fd);
+void	set_map_info(t_info *info, int fd);
 void	set_graphic_info(t_info *info, int fd);
 void	set_player_info(t_info *info);
 

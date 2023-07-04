@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_graphic.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:34:33 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 19:02:46 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:18:33 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,8 @@ static void	put_color_info(int *color, char *clr)
 	color[0] = ft_atoi(spl[0]);
 	color[1] = ft_atoi(spl[1]);
 	color[2] = ft_atoi(spl[2]);
+	if (color[0] < 0 || 255 < color[0] || color[1] < 0 || 255 < color[1]
+		|| color[2] < 0 || 255 < color[2])
+		exit(EXIT_FAILURE);
 	free_str_arr(spl);
 }
