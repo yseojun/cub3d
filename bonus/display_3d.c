@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   display_3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:25:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 16:07:14 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:38:18 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 
 static void	display_background(t_info *info);
+// static void	sort_sprites(t_info *info);
+// static double	get_diagonal_length(double from_x, double from_y, double to_x, double to_y);
+
 
 void	display_3d(t_info *info)
 {
@@ -27,14 +30,10 @@ void	display_3d(t_info *info)
 		ray = set_ray(info, x);
 		line_height = get_line_height(info, &ray);
 		set_frame(info, &ray, x, line_height);
+		// sort_sprites(info);
 		x++;
 	}
 	mlx_put_image_to_window(info->mlx, info->win, info->frame.img, 0, 0);
-}
-
-int	encode_rgb(int color[3])
-{
-	return (color[0] << 16 | color[1] << 8 | color[2]);
 }
 
 static void	display_background(t_info *info)
@@ -59,3 +58,38 @@ static void	display_background(t_info *info)
 		i++;
 	}
 }
+
+// static void	sort_sprites(t_info *info)
+// {
+// 	int			i;
+// 	int			j;
+// 	t_sprite	temp;
+
+// 	i = 0;
+// 	while (i < info->sprite_cnt - 1)
+// 	{
+// 		j = 0;
+// 		while (j < info->sprite_cnt - 1 - i)
+// 		{
+// 			if (get_diagonal_length(info->player.pos[X], info->player.pos[Y], info->sprites[j].pos[X], info->sprites[j].pos[Y])
+// 				< get_diagonal_length(info->player.pos[X], info->player.pos[Y], info->sprites[j + 1].pos[X], info->sprites[j + 1].pos[Y]))
+// 			{
+// 				temp = info->sprites[j];
+// 				info->sprites[j] = info->sprites[j + 1];
+// 				info->sprites[j + 1] = temp;
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// static double	get_diagonal_length(double from_x, double from_y, double to_x, double to_y)
+// {
+// 	double	dist_x;
+// 	double	dist_y;
+
+// 	dist_x = to_x - from_x;
+// 	dist_y = to_y - from_y;
+// 	return (sqrt(pow(dist_x, dist_x) + pow(dist_y, dist_y)));
+// }

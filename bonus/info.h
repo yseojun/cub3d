@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/05 14:00:45 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/05 15:39:52 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,12 @@ typedef struct s_tex_info
 	double	tex_pos;
 }	t_tex_info;
 
-typedef struct s_sprite
-{
-	int		pos[2];
-	int		size[2];
-	void	*textrue;
-}	t_sprite;
+// typedef struct s_sprite
+// {
+// 	int		pos[2];
+// 	int		size[2];
+// 	void	*textrue;
+// }	t_sprite;
 
 typedef struct s_info
 {
@@ -123,8 +123,8 @@ typedef struct s_info
 	void			*win;
 	char			**map;
 	int				map_size[2];
-	int				sprite_cnt;
-	struct s_sprite	*sprites;
+	// int				sprite_cnt;
+	// struct s_sprite	*sprites;
 	struct s_img	frame;
 	struct s_img	minimap;
 	struct s_img	texture[4];
@@ -136,7 +136,6 @@ typedef struct s_info
 t_info	set_info(char *path);
 void	set_map_info(t_info *info, int fd);
 void	check_valid_map(t_info info);
-void	set_sprites(t_info *info);
 void	set_graphic_info(t_info *info, int fd);
 void	set_player_info(t_info *info);
 
@@ -144,6 +143,7 @@ void	set_event(t_info *info);
 
 void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);
+int		encode_rgb(int color[3]);
 
 t_draw	make_dr_info(int from_x, int fromY, int to_x, int to_y);
 int		get_line_height(t_info *info, t_ray *ray);

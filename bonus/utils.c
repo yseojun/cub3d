@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:41:56 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 17:20:46 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/05 14:24:30 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,9 @@ int	str_arr_len(char **str_arr)
 	while (str_arr[idx])
 		idx++;
 	return (idx);
+}
+
+int	encode_rgb(int color[3])
+{
+	return (color[0] << 16 | color[1] << 8 | color[2]);
 }
