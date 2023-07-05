@@ -6,11 +6,11 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:27:47 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 17:31:52 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:16 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static void			draw_x_frame(t_info *info, t_ray *ray, \
 	int x, int line_height);

@@ -6,11 +6,11 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:18:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 18:17:49 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:02 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static char	get_map_inf(t_info *info, int mini_y, int mini_x)
 {

@@ -6,11 +6,11 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:27:06 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 17:34:22 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:04 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static void	bresenham(t_info *info, t_draw dr);
 

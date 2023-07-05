@@ -6,11 +6,11 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:07:27 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 16:31:16 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:32 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static void	set_step_side_dist(t_info *info, t_ray *ray)
 {

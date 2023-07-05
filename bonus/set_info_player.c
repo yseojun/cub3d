@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_player.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:36:33 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 16:07:27 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:24 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static t_player	make_player(int x, int y, char dir);
 

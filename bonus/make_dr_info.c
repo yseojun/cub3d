@@ -6,11 +6,11 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 13:10:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 17:31:37 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:12 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 t_draw	make_dr_info(int from_x, int from_y, int to_x, int to_y)
 {

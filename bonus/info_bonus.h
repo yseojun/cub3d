@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   info.h                                             :+:      :+:    :+:   */
+/*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/05 14:00:45 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/05 15:33:32 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INFO_H
-# define INFO_H
+#ifndef INFO_BONUS_H
+# define INFO_BONUS_H
 
 # include <stdio.h>
 # include <fcntl.h>
@@ -117,6 +117,18 @@ typedef struct s_sprite
 	void	*textrue;
 }	t_sprite;
 
+typedef struct s_event
+{
+	int	push_w;
+	int	push_a;
+	int	push_s;
+	int	push_d;
+	int	push_left;
+	int	push_right;
+	int	mouse;
+	int	space;
+}	t_event;
+
 typedef struct s_info
 {
 	void			*mlx;
@@ -124,6 +136,7 @@ typedef struct s_info
 	char			**map;
 	int				map_size[2];
 	int				sprite_cnt;
+	t_event			ev;
 	struct s_sprite	*sprites;
 	struct s_img	frame;
 	struct s_img	minimap;

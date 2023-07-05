@@ -6,11 +6,11 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 16:34:01 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:09 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 int	main(int argc, char *argv[])
 {

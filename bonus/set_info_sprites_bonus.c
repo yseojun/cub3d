@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_sprites_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:00:00 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/05 14:04:34 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:26 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static t_sprite	*sprites_realloc(t_info *info, int y, int x, char *file);
 

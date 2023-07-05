@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 17:23:34 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:21 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static char		**set_rectangle_map(t_info *info, char **tmp_map);
 static int		get_map_width(char **map);

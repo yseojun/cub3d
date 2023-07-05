@@ -6,11 +6,11 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:27:49 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 17:49:50 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:27:55 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static void	check_edge(t_info info, int y);
 static void	check_around(char **map, int y, int x);

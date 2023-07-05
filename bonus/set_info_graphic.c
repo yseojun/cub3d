@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_graphic.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:34:33 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 17:37:07 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/05 15:28:18 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static void		put_texture_info(t_info *info, char *buffer);
 static t_img	load_to_image(t_info *info, char *buffer);
