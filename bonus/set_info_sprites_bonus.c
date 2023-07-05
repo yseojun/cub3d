@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_sprites_bonus.c                                :+:      :+:    :+:   */
+/*   set_info_sprites_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:00:00 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/05 14:00:35 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/05 14:04:34 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	set_sprites(t_info *info)
 		while (info->map[i][j])
 		{
 			if (info->map[i][j] == '3')
-				info->sprites = sprites_realloc(info, i, j, "./textures/redbrick.xpm");
+				info->sprites = sprites_realloc(info, i, j, "./textures/cat_idle_animated_sprite.xpm");
 			j++;
 		}
 		i++;
