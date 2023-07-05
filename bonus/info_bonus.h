@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/05 15:44:34 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:02:07 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,5 +170,12 @@ void	display_3d(t_info *info);
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
 
 void	display_minimap(t_info *info);
+
+void	move_up(t_info *info, double val);
+void	move_down(t_info *info, double val);
+void	move_left(t_info *info, double val);
+void	move_right(t_info *info, double val);
+
+double	get_diagonal_length(double from_x, double from_y, double to_x, double to_y);
 
 #endif

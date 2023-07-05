@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 15:46:13 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:03:35 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	move(int keycode, t_info *info)
 		dpos_x = -info->player.dir[Y] * move_x;
 		dpos_y = info->player.dir[X] * move_x;
 	}
-	if (info->map[(int)info->player.pos[Y]]\
+	if (info->map[(int)info->player.pos[Y]] \
 		[(int)(info->player.pos[X] + dpos_x * SPEED * 5)] == '0')
 		info->player.pos[X] += dpos_x * SPEED;
-	if (info->map[(int)(info->player.pos[Y] + dpos_y * SPEED * 5)]\
+	if (info->map[(int)(info->player.pos[Y] + dpos_y * SPEED * 5)] \
 		[(int)info->player.pos[X]] == '0')
 		info->player.pos[Y] += dpos_y * SPEED;
 }
@@ -69,17 +69,13 @@ void	move(int keycode, t_info *info)
 // 		- info->player.plane[Y] * cos(ANGLE * sign);
 // }
 
-void	rotate(int keycode, t_info *info)
+void	rotate(t_info *info, int sign)
 {
-	double	sign;
 	double	old_dir_x;
 	double	old_plane_x;
 
 	old_dir_x = info->player.dir[X];
 	old_plane_x = info->player.plane[X];
-	sign = 1;
-	if (keycode == KEY_LEFT_ARROW)
-		sign = -1;
 	info->player.dir[X] = info->player.dir[X] * cos(ANGLE * sign)
 		- info->player.dir[Y] * sin(ANGLE * sign);
 	info->player.dir[Y] = old_dir_x * sin(ANGLE * sign)
@@ -92,7 +88,23 @@ void	rotate(int keycode, t_info *info)
 
 // void	open_door(t_info *info)
 // {
-	
+// 	const int	dxy[2][4] = {{0, 0, -1, 1}, {-1, 1, 0, 0}};
+// 	int			nx;
+// 	int			ny;
+// 	int			i;
+
+// 	i = 0;
+// 	while (i < 4)
+// 	{
+// 		ny = floor(info->player.pos[Y]) + dxy[Y][i];
+// 		nx = floor(info->player.pos[X]) + dxy[X][i];
+// 		if (ny)
+// 		if (info->map[ny][nx] == '2')
+// 		{
+			
+// 		}
+// 		i++;
+// 	}
 // }
 
 // int	press_key(int keycode, t_info *info)
@@ -147,41 +159,40 @@ int	release_key(int keycode, t_info *info)
 	return (0);
 }
 
-void	_move(t_info *info)
+void	_move(t_info *info, double val)
 {
-	double	move_x;
-	double	move_y;
-	double	dpos_x;
-	double	dpos_y;
-
-	move_x = info->ev.push_d - info->ev.push_a;
-	move_y = info->ev.push_w - info->ev.push_s;
-	if (move_y)
-	{
-		dpos_x = info->player.dir[X] * move_y;
-		dpos_y = info->player.dir[Y] * move_y;
-	}
-	if (move_x)
-	{
-		dpos_x = -info->player.dir[Y] * move_x;
-		dpos_y = info->player.dir[X] * move_x;
-	}
-	if (info->map[(int)info->player.pos[Y]]\
-		[(int)(info->player.pos[X] + dpos_x * SPEED * 5)] == '0')
-		info->player.pos[X] += dpos_x * SPEED;
-	if (info->map[(int)(info->player.pos[Y] + dpos_y * SPEED * 5)]\
-		[(int)info->player.pos[X]] == '0')
-		info->player.pos[Y] += dpos_y * SPEED;
+	if (info->ev.push_w)
+		move_up(info, val);
+	if (info->ev.push_s)
+		move_down(info, val);
+	if (info->ev.push_a)
+		move_left(info, val);
+	if (info->ev.push_d)
+		move_right(info, val);
 }
 
-// int	no_event(int keycode, t_info *info)
-// {
-	
-// }
+int	no_event(t_info *info)
+{
+	if ((info->ev.push_a && info->ev.push_w) || (info->ev.push_d && info->ev.push_w)
+		|| (info->ev.push_a && info->ev.push_s) || (info->ev.push_d && info->ev.push_s))
+		_move(info, 0.5);
+	else if (info->ev.push_a || info->ev.push_w || info->ev.push_d || info->ev.push_s)
+		_move(info, 1);
+	if (info->ev.push_left)
+		rotate(info, -1);
+	else if (info->ev.push_right)
+		rotate(info, 1);
+	if (info->ev.space)
+		open_door(info);
+	display_3d(info);
+	display_minimap(info);
+	return (0);
+}
 
 void	set_event(t_info *info)
 {
 	mlx_hook(info->win, 2, 0, &press_key, info);
 	mlx_hook(info->win, 3, 0, &release_key, info);
 	mlx_hook(info->win, CLOSE_BUTTON, 0, &press_close_button, info);
+	mlx_loop_hook(info->mlx, &no_event, info);
 }

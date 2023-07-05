@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:25:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 15:45:19 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:02:14 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ static void	display_background(t_info *info)
 // 	}
 // }
 
-// static double	get_diagonal_length(double from_x, double from_y, double to_x, double to_y)
-// {
-// 	double	dist_x;
-// 	double	dist_y;
+double	get_diagonal_length(double from_x, double from_y, double to_x, double to_y)
+{
+	double	dist_x;
+	double	dist_y;
 
-// 	dist_x = to_x - from_x;
-// 	dist_y = to_y - from_y;
-// 	return (sqrt(pow(dist_x, dist_x) + pow(dist_y, dist_y)));
-// }
+	dist_x = to_x - from_x;
+	dist_y = to_y - from_y;
+	return (sqrt(pow(dist_x, dist_x) + pow(dist_y, dist_y)));
+}

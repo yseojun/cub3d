@@ -28,7 +28,8 @@ display_3d.c \
 display_minimap.c \
 draw_line.c \
 set_frame.c \
-set_event.c
+set_event.c \
+event_move_bonus.c
 OBJS = $(addprefix mandatory/, $(SRCS:.c=.o))\
 	$(GNL:.c=.o)
 BONUS_OBJS = $(addprefix bonus/, $(BONUS_SRCS:.c=.o))\

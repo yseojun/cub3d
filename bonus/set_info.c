@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 15:45:02 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:58:39 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 // static void	set_sprites(t_info *info);
 // static t_sprite	*sprites_realloc(t_info *info, int y, int x, char *file);
+static void	init_ev(t_info *info);
 
 t_info	set_info(char *path)
 {
@@ -24,12 +25,24 @@ t_info	set_info(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		exit(EXIT_FAILURE);
+	init_ev(&info);
 	set_graphic_info(&info, fd);
 	set_map_info(&info, fd);
 	check_valid_map(info);
 	//set_sprites(&info);
 	set_player_info(&info);
 	return (info);
+}
+
+static void	init_ev(t_info *info)
+{
+	info->ev.mouse = 0;
+	info->ev.push_a = 0;
+	info->ev.push_d = 0;
+	info->ev.push_s = 0;
+	info->ev.push_w = 0;
+	info->ev.push_left = 0;
+	info->ev.push_right = 0;
 }
 
 // static void	set_sprites(t_info *info)
