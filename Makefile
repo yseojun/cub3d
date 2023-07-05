@@ -20,6 +20,7 @@ set_info.c \
 set_info_graphic.c \
 set_info_map.c \
 check_valid_map.c \
+set_info_sprites_bonus.c \
 set_info_player.c \
 make_dr_info.c \
 get_line_height.c \
@@ -51,7 +52,7 @@ $(NAME): $(OBJS)
 bonus : $(BONUS_OBJS)
 	make -C libft all -j6
 	make -C mlx all -j6
-	$(CC) $(FLAGS) $^ libft/libft.a -Lmlx -lmlx -framework OpenGL -framework Appkit -o $@
+	$(CC) $(FLAGS) $^ libft/libft.a -Lmlx -lmlx -framework OpenGL -framework Appkit -o $(NAME)
 
 %.o: %.c
 	$(CC) $(FLAGS) -Imlx -c $< -o $@

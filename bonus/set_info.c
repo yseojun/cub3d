@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 17:28:01 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/05 14:00:16 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_info	set_info(char *path)
 	set_graphic_info(&info, fd);
 	set_map_info(&info, fd);
 	check_valid_map(info);
+	set_sprites(&info);
 	set_player_info(&info);
 	return (info);
 }
