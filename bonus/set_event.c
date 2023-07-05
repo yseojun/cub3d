@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 17:03:35 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:18:42 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,26 +86,36 @@ void	rotate(t_info *info, int sign)
 		+ info->player.plane[Y] * cos(ANGLE * sign);
 }
 
-// void	open_door(t_info *info)
-// {
-// 	const int	dxy[2][4] = {{0, 0, -1, 1}, {-1, 1, 0, 0}};
-// 	int			nx;
-// 	int			ny;
-// 	int			i;
+void	open_door(t_info *info)
+{
+	const int	dxy[2][4] = {{0, 0, -1, 1}, {-1, 1, 0, 0}};
+	int			nx;
+	int			ny;
+	int			i;
 
-// 	i = 0;
-// 	while (i < 4)
-// 	{
-// 		ny = floor(info->player.pos[Y]) + dxy[Y][i];
-// 		nx = floor(info->player.pos[X]) + dxy[X][i];
-// 		if (ny)
-// 		if (info->map[ny][nx] == '2')
-// 		{
-			
-// 		}
-// 		i++;
-// 	}
-// }
+	i = 0;
+	while (i < 4)
+	{
+		ny = floor(info->player.pos[Y]) + dxy[Y][i];
+		nx = floor(info->player.pos[X]) + dxy[X][i];
+		if (ny < 0 || ny >= info->map_size[HEI]
+			|| nx < 0 || nx >= info->map_size[WID])
+			continue ;
+		if (info->map[ny][nx] == '2')
+		{
+			if (get_diagonal_length(info->player.pos[X], \
+				info->player.pos[Y], nx, ny) < 0.2)
+				info->map[ny][nx] == 'O';
+		}
+		else if (info->map[ny][nx] == 'O')
+		{
+			if (get_diagonal_length(info->player.pos[X], \
+				info->player.pos[Y], nx, ny) < 0.2)
+				info->map[ny][nx] == '2';
+		}
+		i++;
+	}
+}
 
 // int	press_key(int keycode, t_info *info)
 // {
@@ -184,6 +194,7 @@ int	no_event(t_info *info)
 		rotate(info, 1);
 	if (info->ev.space)
 		open_door(info);
+	if (info->is_opened)
 	display_3d(info);
 	display_minimap(info);
 	return (0);
