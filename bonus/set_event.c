@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 15:42:05 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:46:13 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,10 +174,10 @@ void	_move(t_info *info)
 		info->player.pos[Y] += dpos_y * SPEED;
 }
 
-int	no_event(int keycode, t_info *info)
-{
+// int	no_event(int keycode, t_info *info)
+// {
 	
-}
+// }
 
 void	set_event(t_info *info)
 {

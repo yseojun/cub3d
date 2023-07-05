@@ -20,7 +20,6 @@ set_info.c \
 set_info_graphic.c \
 set_info_map.c \
 check_valid_map.c \
-set_info_sprites_bonus.c \
 set_info_player.c \
 make_dr_info.c \
 get_line_height.c \
