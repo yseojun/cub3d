@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 16:35:56 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:38:15 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,13 @@ typedef struct s_tex_info
 	double	tex_pos;
 }	t_tex_info;
 
-// typedef struct s_sprite
-// {
-// 	int		pos[2];
-// 	int		size[2];
-// 	void	*textrue;
-// }	t_sprite;
+typedef struct s_sprite
+{
+	int		pos[2];
+	int		size[2];
+	void	*texture[4];
+	int		idx;
+}	t_sprite;
 
 typedef struct s_event
 {
@@ -179,6 +180,7 @@ int		get_line_height(t_info *info, t_ray *ray);
 
 t_ray	set_ray(t_info *info, int x);
 
+void	display_frame(t_info *info);
 void	display_3d(t_info *info);
 
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);

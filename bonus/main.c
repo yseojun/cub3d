@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 15:31:44 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 17:36:35 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	main(int argc, char *argv[])
 	info.minimap.addr = mlx_get_data_addr(info.minimap.img, &info.minimap.bits, \
 		&info.minimap.line_length, &info.minimap.endian);
 	set_mouse(&info);
-	display_3d(&info);
-	display_minimap(&info);
+	display_frame(&info);
 	set_event(&info);
 	mlx_loop(info.mlx);
 	return (0);
