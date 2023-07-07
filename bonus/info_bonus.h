@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 15:35:22 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 16:18:02 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ void	manage_door(t_info *info);
 void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);
 int		encode_rgb(int color[3]);
+int		finish_game(t_info *info);
 
 t_draw	make_dr_info(int from_x, int fromY, int to_x, int to_y);
 int		get_line_height(t_info *info, t_ray *ray);
@@ -184,7 +185,10 @@ void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
 
 void	display_minimap(t_info *info);
 
-void	chk_move(t_info *info, double dpos_x, double dpos_y);
+void	move(t_info *info, double val);
+void	rotate(t_info *info, int sign, double angle);
+int		mouse_move(int x, int y, t_info *info);
+
 void	move_up(t_info *info, double val);
 void	move_down(t_info *info, double val);
 void	move_left(t_info *info, double val);

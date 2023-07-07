@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 15:28:21 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:46:22 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,24 @@
 
 static char		**set_rectangle_map(t_info *info, char **tmp_map);
 static int		get_map_width(char **map);
-static char		**read_map(int fd);
+static char		**read_map(int fd, char *temp);
 static char		**map_realloc(char **map, char *map_str);
 
 void	set_map_info(t_info *info, int fd)
 {
+	char	*temp;
 	char	**tmp_map;
 
-	tmp_map = read_map(fd);
+	while (1)
+	{
+		temp = get_next_line(fd);
+		if (!temp)
+			exit(EXIT_FAILURE);
+		if (ft_strncmp(temp, "\n", 2))
+			break ;
+		free(temp);
+	}
+	tmp_map = read_map(fd, temp);
 	info->map_size[HEI] = str_arr_len(tmp_map);
 	info->map_size[WID] = get_map_width(tmp_map);
 	info->map = set_rectangle_map(info, tmp_map);
@@ -36,11 +46,11 @@ static char	**set_rectangle_map(t_info *info, char **tmp_map)
 	map = (char **)malloc(sizeof(char *) * (info->map_size[HEI] + 1));
 	i = 0;
 	map[info->map_size[HEI]] = NULL;
-	while(map[i])
+	while (map[i])
 	{
 		map[i] = (char *)malloc(info->map_size[WID] + 1);
 		j = 0;
-		while(j < info->map_size[WID])
+		while (j < info->map_size[WID])
 		{
 			if (j < (int)ft_strlen(tmp_map[i]))
 				map[i][j] = tmp_map[i][j];
@@ -70,22 +80,12 @@ static int	get_map_width(char **map)
 	return (max_width);
 }
 
-static char	**read_map(int fd)
+static char	**read_map(int fd, char *temp)
 {
-	char	*temp;
 	char	*map_str;
 	char	**map;
 
 	map = NULL;
-	while (1)
-	{
-		temp = get_next_line(fd);
-		if (!temp)
-			exit(EXIT_FAILURE);
-		if (ft_strncmp(temp, "\n", 2))
-			break ;
-		free(temp);
-	}
 	while (1)
 	{
 		map_str = ft_strtrim(temp, "\n");

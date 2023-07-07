@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 15:34:04 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 15:48:00 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static void	init_ev(t_info *info)
 // 		while (info->map[i][j])
 // 		{
 // 			if (info->map[i][j] == '3')
-// 				info->sprites = sprites_realloc(info, i, j, "./textures/bluestone.xpm");
+// 				info->sprites = sprites_realloc(info, i, j, 
+//					"./textures/bluestone.xpm");
 // 			j++;
 // 		}
 // 		i++;
