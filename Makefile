@@ -13,7 +13,9 @@ set_ray.c \
 display_3d.c \
 draw_line.c \
 set_frame.c \
-set_event.c
+set_event.c \
+event_move.c \
+event_move_chk.c
 BONUS_SRCS = main.c \
 utils.c \
 set_info.c \

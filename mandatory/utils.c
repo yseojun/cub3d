@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:41:56 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/03 17:20:46 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 15:51:37 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ int	str_arr_len(char **str_arr)
 	while (str_arr[idx])
 		idx++;
 	return (idx);
+}
+
+int	finish_game(t_info *info)
+{
+	mlx_destroy_window(info->mlx, info->win);
+	exit(EXIT_SUCCESS);
 }
