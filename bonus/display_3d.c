@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:25:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 17:02:14 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:12:54 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	display_background(t_info *info);
 // static void	sort_sprites(t_info *info);
 // static double	get_diagonal_length(double from_x, double from_y, double to_x, double to_y);
-
 
 void	display_3d(t_info *info)
 {
@@ -91,5 +90,5 @@ double	get_diagonal_length(double from_x, double from_y, double to_x, double to_
 
 	dist_x = to_x - from_x;
 	dist_y = to_y - from_y;
-	return (sqrt(pow(dist_x, dist_x) + pow(dist_y, dist_y)));
+	return (sqrt(pow(dist_x, 2) + pow(dist_y, 2)));
 }

@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   display_minimap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:18:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 15:28:02 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:51:37 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info_bonus.h"
+
+static char	get_map_inf(t_info *info, int mini_y, int mini_x);
+static void	put_minimap_color(t_info *info, char now, int mini_y, int mini_x);
+
+void	display_minimap(t_info *info)
+{
+	int		mini_x;
+	int		mini_y;
+	char	now;
+
+	mini_y = 0;
+	while (mini_y < 200)
+	{
+		mini_x = 0;
+		while (mini_x < 200)
+		{				
+			now = get_map_inf(info, mini_y, mini_x);
+			put_minimap_color(info, now, mini_y, mini_x);
+			mini_x++;
+		}
+		mini_y++;
+	}
+	mlx_put_image_to_window(info->mlx, info->win, info->minimap.img, 25, 25);
+}
 
 static char	get_map_inf(t_info *info, int mini_y, int mini_x)
 {
@@ -33,32 +57,13 @@ static void	put_minimap_color(t_info *info, char now, int mini_y, int mini_x)
 
 	mini = (int *)info->minimap.addr;
 	if (now == 0 || now == ' ')
-		mini[mini_y * 200 + mini_x] = 0xCCCCCC;
-	else if (now == '0')
+		mini[mini_y * 200 + mini_x] = 0x000000c;
+	else if (now == '0' || now == 'O')
 		mini[mini_y * 200 + mini_x] = 0xCCFFCC;
 	else if (now == '1')
 		mini[mini_y * 200 + mini_x] = 0x003300;
+	else if (now == '2')
+		mini[mini_y * 200 + mini_x] = 0x3232FF;
 	else if (now == 'm')
 		mini[mini_y * 200 + mini_x] = 0xFF0000;
-}
-
-void	display_minimap(t_info *info)
-{
-	int		mini_x;
-	int		mini_y;
-	char	now;
-
-	mini_y = 0;
-	while (mini_y < 200)
-	{
-		mini_x = 0;
-		while (mini_x < 200)
-		{				
-			now = get_map_inf(info, mini_y, mini_x);
-			put_minimap_color(info, now, mini_y, mini_x);
-			mini_x++;
-		}
-		mini_y++;
-	}
-	mlx_put_image_to_window(info->mlx, info->win, info->minimap.img, 25, 25);
 }

@@ -3,28 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_line_height.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:43:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 15:28:07 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:35:30 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info_bonus.h"
 
-static void	get_perp_wall_dist(t_info *info, t_ray *ray)
-{
-	if (ray->side == X)
-	{
-		ray->perp_wall_dist = (ray->hit[X] - info->player.pos[X]
-				+ (1 - ray->step[X]) / 2) / ray->ray_dir[X];
-	}
-	else
-	{
-		ray->perp_wall_dist = (ray->hit[Y] - info->player.pos[Y]
-				+ (1 - ray->step[Y]) / 2) / ray->ray_dir[Y];
-	}
-}
+static void	get_perp_wall_dist(t_info *info, t_ray *ray);
 
 int	get_line_height(t_info *info, t_ray *ray)
 {
@@ -45,9 +33,27 @@ int	get_line_height(t_info *info, t_ray *ray)
 			ray->hit[Y] += ray->step[Y];
 			ray->side = Y;
 		}
-		if (info->map[ray->hit[Y]][ray->hit[X]] == '1')
-			is_hit = 1;
+		if (info->map[ray->hit[Y]][ray->hit[X]] == '1' || info->map[ray->hit[Y]][ray->hit[X]] == '2')
+		{
+			is_hit = TRUE;
+			if (info->map[ray->hit[Y]][ray->hit[X]] == '2')
+				ray->is_door = TRUE;
+		}
 	}
 	get_perp_wall_dist(info, ray);
 	return ((int)(HEIGHT / ray->perp_wall_dist));
+}
+
+static void	get_perp_wall_dist(t_info *info, t_ray *ray)
+{
+	if (ray->side == X)
+	{
+		ray->perp_wall_dist = (ray->hit[X] - info->player.pos[X]
+				+ (1 - ray->step[X]) / 2) / ray->ray_dir[X];
+	}
+	else
+	{
+		ray->perp_wall_dist = (ray->hit[Y] - info->player.pos[Y]
+				+ (1 - ray->step[Y]) / 2) / ray->ray_dir[Y];
+	}
 }

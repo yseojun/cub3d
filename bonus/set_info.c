@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 15:58:39 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:26:40 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_info	set_info(char *path)
 		exit(EXIT_FAILURE);
 	init_ev(&info);
 	set_graphic_info(&info, fd);
+	info.texture[DOOR] = load_to_image(&info, DOOR_FILE_PATH);
 	set_map_info(&info, fd);
 	check_valid_map(info);
 	//set_sprites(&info);

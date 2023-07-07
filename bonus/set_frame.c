@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_frame.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:27:47 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 15:28:16 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:36:16 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ static int	get_tex_x(t_info *info, t_ray *ray)
 
 static int	get_directrion(t_ray *ray)
 {
+	if (ray->is_door)
+		return (DOOR);
 	if (ray->side == X)
 	{
 		if (ray->ray_dir[X] > 0)

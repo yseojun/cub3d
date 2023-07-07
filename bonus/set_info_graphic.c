@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_graphic.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:34:33 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/05 15:28:18 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:27:12 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info_bonus.h"
 
 static void		put_texture_info(t_info *info, char *buffer);
-static t_img	load_to_image(t_info *info, char *buffer);
 static void		put_color_info(int *color, char *clr);
 
 void	set_graphic_info(t_info *info, int fd)
@@ -60,7 +59,7 @@ static void	put_texture_info(t_info *info, char *buffer)
 	free_str_arr(spl);
 }
 
-static t_img	load_to_image(t_info *info, char *file)
+t_img	load_to_image(t_info *info, char *file)
 {
 	t_img	new;
 

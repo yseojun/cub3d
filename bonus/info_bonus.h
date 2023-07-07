@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/05 17:18:04 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:12:07 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@
 # define W 1
 # define S 2
 # define E 3
+# define DOOR 4
+# define DOOR_FILE_PATH "./textures/door.xpm"
 
 typedef struct s_player
 {
@@ -84,6 +86,7 @@ typedef struct s_ray
 	double	delta_dist[2];
 	double	side_dist[2];
 	int		side;
+	int		is_door;
 	double	perp_wall_dist;
 	int		dir;
 	int		start;
@@ -126,7 +129,6 @@ typedef struct s_event
 	int	push_left;
 	int	push_right;
 	int	mouse;
-	int	space;
 }	t_event;
 
 typedef struct s_info
@@ -142,7 +144,7 @@ typedef struct s_info
 	// struct s_sprite	*sprites;
 	struct s_img	frame;
 	struct s_img	minimap;
-	struct s_img	texture[4];
+	struct s_img	texture[5];
 	int				f_color[3];
 	int				c_color[3];
 	t_player		player;
@@ -152,9 +154,11 @@ t_info	set_info(char *path);
 void	set_map_info(t_info *info, int fd);
 void	check_valid_map(t_info info);
 void	set_graphic_info(t_info *info, int fd);
+t_img	load_to_image(t_info *info, char *file);
 void	set_player_info(t_info *info);
 
 void	set_event(t_info *info);
+void	manage_door(t_info *info);
 
 void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);
