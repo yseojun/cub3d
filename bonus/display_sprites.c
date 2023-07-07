@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:36:50 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 18:45:44 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:59:17 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,33 +47,50 @@ void	calculate_sprite(t_info *info, t_sprite_info spr, int i)
 
 void	draw_each_sprite(t_info *info, t_sprite_info spr, int i)
 {
-	int	drawstart[2];
-	int	drawend[2];
 	int	x;
 	int	tex_x;
 
-	drawstart[Y] = -spr.sprite_height / 2 + HEIGHT / 2;
-	if (drawstart[Y] < 0)
-		drawstart[Y] = 0;
-	drawend[Y] = spr.sprite_height / 2 + HEIGHT / 2;
-	if (drawend[Y] >= HEIGHT)
-		drawend[Y] = HEIGHT - 1;
+	spr.drawstart[Y] = -spr.sprite_height / 2 + HEIGHT / 2;
+	if (spr.drawstart[Y] < 0)
+		spr.drawstart[Y] = 0;
+	spr.drawend[Y] = spr.sprite_height / 2 + HEIGHT / 2;
+	if (spr.drawend[Y] >= HEIGHT)
+		spr.drawend[Y] = HEIGHT - 1;
 	spr.sprite_width = abs((int)(HEIGHT / spr.transform[Y]));
-	drawstart[X] = -spr.sprite_width / 2 + spr.sprite_screen_x;
-	if (drawstart[X] < 0)
-		drawstart[X] = 0;
-	drawend[X] = spr.sprite_width / 2 + spr.sprite_screen_x;
-	if (drawend[X] >= WIDTH)
-		drawend[X] = WIDTH - 1;
-	x = drawstart[X];
-	while (x < drawend[X])
+	spr.drawstart[X] = -spr.sprite_width / 2 + spr.sprite_screen_x;
+	if (spr.drawstart[X] < 0)
+		spr.drawstart[X] = 0;
+	spr.drawend[X] = spr.sprite_width / 2 + spr.sprite_screen_x;
+	if (spr.drawend[X] >= WIDTH)
+		spr.drawend[X] = WIDTH - 1;
+	x = spr.drawstart[X];
+	while (x < spr.drawend[X])
 	{
 		tex_x = get_sprite_tex_x(info, spr, i, x);
 		if (!(spr.transform[Y] > 0 && x > 0 && x < WIDTH
 				&& spr.transform[Y] < info->z_buffer[x]))
 			continue ;
-		draw_sprite_y(info, spr, tex_x);
+		draw_sprite_y(info, spr, tex_x, i);
 		x++;
+	}
+}
+
+void	draw_sprite_y(t_info *info, t_sprite_info spr, int tex_x, int i)
+{
+	int	y;
+	int	d;
+	int	tex_y;
+	int	color;
+
+	y = spr.drawstart[Y];
+	while (y < spr.drawend[Y])
+	{
+		d = y * 256 - HEIGHT * 128 + spr.sprite_height * 128;
+		tex_y = ((d * info->sprites[i].frame->height) / spr.sprite_height) / 256;
+		color = get_sprite_color(info);
+		if ((color & 0x00FFFFFF) != 0)
+			put_sprite_color_to_frame(info);
+		y++;
 	}
 }
 
