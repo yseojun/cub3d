@@ -6,12 +6,13 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:43:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 15:31:27 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 16:29:31 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info_bonus.h"
 
+static int	check_hit_wall(t_info *info, t_ray *ray);
 static void	get_perp_wall_dist(t_info *info, t_ray *ray);
 
 int	get_line_height(t_info *info, t_ray *ray)
@@ -33,16 +34,22 @@ int	get_line_height(t_info *info, t_ray *ray)
 			ray->hit[Y] += ray->step[Y];
 			ray->side = Y;
 		}
-		if (info->map[ray->hit[Y]][ray->hit[X]] == '1'
-			|| info->map[ray->hit[Y]][ray->hit[X]] == '2')
-		{
-			is_hit = TRUE;
-			if (info->map[ray->hit[Y]][ray->hit[X]] == '2')
-				ray->is_door = TRUE;
-		}
+		is_hit = check_hit_wall(info, ray);
 	}
 	get_perp_wall_dist(info, ray);
 	return ((int)(HEIGHT / ray->perp_wall_dist));
+}
+
+static int	check_hit_wall(t_info *info, t_ray *ray)
+{
+	if (info->map[ray->hit[Y]][ray->hit[X]] == '1')
+		return (TRUE);
+	if (info->map[ray->hit[Y]][ray->hit[X]] == '2')
+	{
+		ray->is_door = TRUE;
+		return (TRUE);
+	}
+	return (FALSE);
 }
 
 static void	get_perp_wall_dist(t_info *info, t_ray *ray)

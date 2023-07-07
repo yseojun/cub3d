@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 16:18:02 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 16:26:05 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,7 @@ void	move_down(t_info *info, double val);
 void	move_left(t_info *info, double val);
 void	move_right(t_info *info, double val);
 
-double	get_diagonal_length(double from_x, double from_y, double to_x, double to_y);
+double	get_diagonal_length(double from_x, double from_y,
+			double to_x, double to_y);
 
 #endif

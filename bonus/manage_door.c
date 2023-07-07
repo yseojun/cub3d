@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:10:02 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 14:11:09 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 16:25:05 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	manage_door(t_info *info)
 	{
 		nxy[Y] = floor(info->player.pos[Y]) + dxy[Y][i];
 		nxy[X] = floor(info->player.pos[X]) + dxy[X][i];
-		if ((info->map[nxy[Y]][nxy[X]] == '2' || info->map[nxy[Y]][nxy[X]] == 'O')
+		if ((info->map[nxy[Y]][nxy[X]] == '2'
+			|| info->map[nxy[Y]][nxy[X]] == 'O')
 			&& is_min_distance_to_door(info, &min_distance, nxy[Y], nxy[X]))
 		{
 			min_xy[Y] = nxy[Y];
