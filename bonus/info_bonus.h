@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 18:41:20 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:55:04 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,12 +169,14 @@ typedef struct s_info
 }	t_info;
 
 t_info	set_info(char *path);
+void	set_graphic_info(t_info *info, int fd);
 void	set_map_info(t_info *info, int fd);
 void	check_valid_map(t_info info);
-void	set_graphic_info(t_info *info, int fd);
-t_img	load_to_image(t_info *info, char *file);
+void	set_sprites(t_info *info);
 void	set_player_info(t_info *info);
 void	set_mouse(t_info *info);
+
+t_img	load_to_image(t_info *info, char *file);
 
 void	set_event(t_info *info);
 void	manage_door(t_info *info);
@@ -193,6 +195,8 @@ void	display_frame(t_info *info);
 void	display_3d(t_info *info);
 
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
+
+void	get_sprite_distance(t_info *info);
 
 void	display_minimap(t_info *info);
 
