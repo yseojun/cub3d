@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 18:41:20 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:54:53 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,8 @@ typedef struct s_sprite
 
 typedef struct s_sprite_info
 {
+	int		drawstart[2];
+	int		drawend[2];
 	double	sprite[2];
 	double	inv_det;
 	double	transform[2];
