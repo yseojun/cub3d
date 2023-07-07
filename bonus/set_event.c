@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 14:10:14 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 14:16:27 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,13 @@ void	_move(t_info *info, double val)
 
 int	no_event(t_info *info)
 {
-	if ((info->ev.push_a && info->ev.push_w) || (info->ev.push_d && info->ev.push_w)
-		|| (info->ev.push_a && info->ev.push_s) || (info->ev.push_d && info->ev.push_s))
+	if ((info->ev.push_a && info->ev.push_w)
+		|| (info->ev.push_d && info->ev.push_w)
+		|| (info->ev.push_a && info->ev.push_s)
+		|| (info->ev.push_d && info->ev.push_s))
 		_move(info, 0.5);
-	else if (info->ev.push_a || info->ev.push_w || info->ev.push_d || info->ev.push_s)
+	else if (info->ev.push_a || info->ev.push_w
+		|| info->ev.push_d || info->ev.push_s)
 		_move(info, 1);
 	if (info->ev.push_left)
 		rotate(info, -1);
