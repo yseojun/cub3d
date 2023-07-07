@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_door.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:10:02 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 16:25:05 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 16:33:52 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	is_min_distance_to_door(t_info *info, double *min, int ny, int nx)
 {
 	double	distance;
 
-	distance = get_diagonal_length(info->player.pos[X], \
+	distance = get_length(info->player.pos[X], \
 				info->player.pos[Y], nx + 0.5, ny + 0.5);
 	if (distance < *min)
 	{
