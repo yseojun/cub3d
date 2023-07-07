@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 17:38:15 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 18:26:41 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,20 @@ typedef struct s_tex_info
 typedef struct s_sprite
 {
 	int		pos[2];
-	int		size[2];
-	void	*texture[4];
+	double	distance;
+	t_img	frame[4];
 	int		idx;
 }	t_sprite;
+
+typedef struct s_sprite_info
+{
+	double	sprite[2];
+	double	inv_det;
+	double	transform[2];
+	int		sprite_screen_x;
+	int		sprite_height;
+	int		sprite_width;
+}	t_sprite_info;
 
 typedef struct s_event
 {
@@ -146,6 +156,7 @@ typedef struct s_info
 	void			*win;
 	char			**map;
 	int				map_size[2];
+	double			z_buffer[WIDTH];
 	int				sprite_cnt;
 	t_event			ev;
 	struct s_sprite	*sprites;
