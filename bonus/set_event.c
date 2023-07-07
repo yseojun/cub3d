@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 15:25:28 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:33:11 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	finish_game(t_info *info)
 {
 	mlx_destroy_window(info->mlx, info->win);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 void	rotate(t_info *info, int sign, double angle)
@@ -38,39 +38,39 @@ void	rotate(t_info *info, int sign, double angle)
 int	press_key(int keycode, t_info *info)
 {
 	if (keycode == KEY_W)
-		info->ev.push_w = 1;
+		info->ev.push_w = TRUE;
 	if (keycode == KEY_A)
-		info->ev.push_a = 1;
+		info->ev.push_a = TRUE;
 	if (keycode == KEY_S)
-		info->ev.push_s = 1;
+		info->ev.push_s = TRUE;
 	if (keycode == KEY_D)
-		info->ev.push_d = 1;
+		info->ev.push_d = TRUE;
 	if (keycode == KEY_LEFT_ARROW)
-		info->ev.push_left = 1;
+		info->ev.push_left = TRUE;
 	if (keycode == KEY_RIGHT_ARROW)
-		info->ev.push_right = 1;
+		info->ev.push_right = TRUE;
 	if (keycode == KEY_SPACE)
 		manage_door(info);
 	if (keycode == KEY_ESC)
 		finish_game(info);
-	return (0);
+	return (SUCCESS);
 }
 
 int	release_key(int keycode, t_info *info)
 {
 	if (keycode == KEY_W)
-		info->ev.push_w = 0;
+		info->ev.push_w = FALSE;
 	if (keycode == KEY_A)
-		info->ev.push_a = 0;
+		info->ev.push_a = FALSE;
 	if (keycode == KEY_S)
-		info->ev.push_s = 0;
+		info->ev.push_s = FALSE;
 	if (keycode == KEY_D)
-		info->ev.push_d = 0;
+		info->ev.push_d = FALSE;
 	if (keycode == KEY_LEFT_ARROW)
-		info->ev.push_left = 0;
+		info->ev.push_left = FALSE;
 	if (keycode == KEY_RIGHT_ARROW)
-		info->ev.push_right = 0;
-	return (0);
+		info->ev.push_right = FALSE;
+	return (SUCCESS);
 }
 
 void	_move(t_info *info, double val)
@@ -101,7 +101,7 @@ int	no_event(t_info *info)
 		rotate(info, 1, 0.1);
 	display_3d(info);
 	display_minimap(info);
-	return (0);
+	return (SUCCESS);
 }
 
 int	mouse_move(int x, int y, t_info *info)
@@ -116,7 +116,7 @@ int	mouse_move(int x, int y, t_info *info)
 		rotate(info, 1, info->ev.mouse_dx * 0.001);
 	mlx_mouse_move(info->win, WIDTH / 2, HEIGHT / 2);
 	info->ev.prev_mouse_x = WIDTH / 2;
-	return (0);
+	return (SUCCESS);
 }
 
 void	set_event(t_info *info)

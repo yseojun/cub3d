@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:43:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 11:35:30 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 15:31:27 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	get_line_height(t_info *info, t_ray *ray)
 			ray->hit[Y] += ray->step[Y];
 			ray->side = Y;
 		}
-		if (info->map[ray->hit[Y]][ray->hit[X]] == '1' || info->map[ray->hit[Y]][ray->hit[X]] == '2')
+		if (info->map[ray->hit[Y]][ray->hit[X]] == '1'
+			|| info->map[ray->hit[Y]][ray->hit[X]] == '2')
 		{
 			is_hit = TRUE;
 			if (info->map[ray->hit[Y]][ray->hit[X]] == '2')

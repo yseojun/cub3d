@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 15:24:24 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:35:22 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,34 @@
 # include "../gnl/get_next_line_bonus.h"
 # include "../libft/libft.h"
 
+# define WIDTH 2000
+# define HEIGHT 1000
+
 # define FALSE 0
 # define TRUE 1
 # define SUCCESS 0
 # define FAILURE -1
+
+# define POV 1
+# define SPEED 0.1
+
+# define X 0
+# define Y 1
+# define WID 0
+# define HEI 1
+
+# define N 0
+# define W 1
+# define S 2
+# define E 3
+# define DOOR 4
+# define DOOR_FILE_PATH "./textures/door.xpm"
+
+# define BLACK 0x000000
+# define RIGHT_GREEN 0xCCFFCC
+# define GREEN 0x003300
+# define BLUE 0x3232FF
+# define RED 0xFF0000
 
 # define KEY_W 13
 # define KEY_A 0
@@ -37,26 +61,8 @@
 # define KEY_ESC 53
 # define CLOSE_BUTTON 17
 
-# define WIDTH 2000
-# define HEIGHT 1000
-
-# define WID 0
-# define HEI 1
 # define MINIMAP_ROOM 18
 # define MINIMAP_DIVIER	2
-
-# define X 0
-# define Y 1
-# define POV 1
-# define SPEED 0.1
-# define ANGLE 0.1
-
-# define N 0
-# define W 1
-# define S 2
-# define E 3
-# define DOOR 4
-# define DOOR_FILE_PATH "./textures/door.xpm"
 
 typedef struct s_player
 {

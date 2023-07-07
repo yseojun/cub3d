@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:18:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 13:51:37 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 15:31:02 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ static void	put_minimap_color(t_info *info, char now, int mini_y, int mini_x)
 
 	mini = (int *)info->minimap.addr;
 	if (now == 0 || now == ' ')
-		mini[mini_y * 200 + mini_x] = 0x000000c;
+		mini[mini_y * 200 + mini_x] = BLACK;
 	else if (now == '0' || now == 'O')
-		mini[mini_y * 200 + mini_x] = 0xCCFFCC;
+		mini[mini_y * 200 + mini_x] = RIGHT_GREEN;
 	else if (now == '1')
-		mini[mini_y * 200 + mini_x] = 0x003300;
+		mini[mini_y * 200 + mini_x] = GREEN;
 	else if (now == '2')
-		mini[mini_y * 200 + mini_x] = 0x3232FF;
+		mini[mini_y * 200 + mini_x] = BLUE;
 	else if (now == 'm')
-		mini[mini_y * 200 + mini_x] = 0xFF0000;
+		mini[mini_y * 200 + mini_x] = RED;
 }

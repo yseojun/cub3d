@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 15:25:45 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:31:44 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		return (1);
 	info = set_info(argv[1]);
-	info.win = mlx_new_window(info.mlx, WIDTH, HEIGHT, "so_long");
+	info.win = mlx_new_window(info.mlx, WIDTH, HEIGHT, "cub3d");
 	info.frame.img = mlx_new_image(info.mlx, WIDTH, HEIGHT);
 	info.frame.addr = mlx_get_data_addr(info.frame.img, &info.frame.bits, \
 		&info.frame.line_length, &info.frame.endian);

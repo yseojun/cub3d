@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 15:06:07 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:34:04 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ t_info	set_info(char *path)
 
 static void	init_ev(t_info *info)
 {
-	info->ev.push_a = 0;
-	info->ev.push_d = 0;
-	info->ev.push_s = 0;
-	info->ev.push_w = 0;
-	info->ev.push_left = 0;
-	info->ev.push_right = 0;
+	info->ev.push_a = FALSE;
+	info->ev.push_d = FALSE;
+	info->ev.push_s = FALSE;
+	info->ev.push_w = FALSE;
+	info->ev.push_left = FALSE;
+	info->ev.push_right = FALSE;
 }
 
 // static void	set_sprites(t_info *info)
