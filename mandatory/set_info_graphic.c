@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:34:33 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 17:18:33 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 18:15:58 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static t_img	load_to_image(t_info *info, char *buffer)
 	t_img	new;
 
 	new.img = mlx_xpm_file_to_image(info->mlx, buffer, &new.width, &new.height);
+	if (!new.img)
+		exit(EXIT_FAILURE);
 	new.addr = mlx_get_data_addr(new.img, &new.bits, \
 		&new.line_length, &new.endian);
 	return (new);
