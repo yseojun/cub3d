@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/05 15:33:12 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:52:14 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,16 @@ typedef struct s_tex_info
 	double	tex_pos;
 }	t_tex_info;
 
+typedef struct s_event
+{
+	int	push_w;
+	int	push_a;
+	int	push_s;
+	int	push_d;
+	int	push_left;
+	int	push_right;
+}	t_event;
+
 typedef struct s_info
 {
 	void			*mlx;
@@ -122,6 +132,7 @@ typedef struct s_info
 	int				f_color[3];
 	int				c_color[3];
 	t_player		player;
+	t_event			ev;
 }	t_info;
 
 t_info	set_info(char *path);
@@ -142,6 +153,15 @@ t_ray	set_ray(t_info *info, int x);
 
 void	display_3d(t_info *info);
 
+void	_move(t_info *info, double val);
+void	chk_move(t_info *info, double dpos_x, double dpos_y);
+void	move_up(t_info *info, double val);
+void	move_down(t_info *info, double val);
+void	move_left(t_info *info, double val);
+void	move_right(t_info *info, double val);
+
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
+
+int		finish_game(t_info *info);
 
 #endif

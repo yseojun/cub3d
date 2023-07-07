@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 17:23:34 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 15:49:31 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ static char	**set_rectangle_map(t_info *info, char **tmp_map)
 	map = (char **)malloc(sizeof(char *) * (info->map_size[HEI] + 1));
 	i = 0;
 	map[info->map_size[HEI]] = NULL;
-	while(map[i])
+	while (map[i])
 	{
 		map[i] = (char *)malloc(info->map_size[WID] + 1);
 		j = 0;
-		while(j < info->map_size[WID])
+		while (j < info->map_size[WID])
 		{
 			if (j < (int)ft_strlen(tmp_map[i]))
 				map[i][j] = tmp_map[i][j];
