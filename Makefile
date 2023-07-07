@@ -34,7 +34,7 @@ set_event.c \
 set_mouse_bonus.c \
 event_move_bonus.c \
 manage_door.c \
-event_move_chk.c
+event_move_chk_bonus.c
 OBJS = $(addprefix mandatory/, $(SRCS:.c=.o))\
 	$(GNL:.c=.o)
 BONUS_OBJS = $(addprefix bonus/, $(BONUS_SRCS:.c=.o))\
