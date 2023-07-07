@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 16:08:46 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/05 16:39:43 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:07:12 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,7 @@ void	move_up(t_info *info, double val)
 
 	dpos_x = info->player.dir[X] * val;
 	dpos_y = info->player.dir[Y] * val;
-	if (info->map[(int)info->player.pos[Y]] \
-		[(int)(info->player.pos[X] + dpos_x * SPEED * 5)] == '0')
-		info->player.pos[X] += dpos_x * SPEED;
-	if (info->map[(int)(info->player.pos[Y] + dpos_y * SPEED * 5)] \
-		[(int)info->player.pos[X]] == '0')
-		info->player.pos[Y] += dpos_y * SPEED;
+	chk_move(info, dpos_x, dpos_y);
 }
 
 void	move_down(t_info *info, double val)
@@ -34,12 +29,7 @@ void	move_down(t_info *info, double val)
 
 	dpos_x = -info->player.dir[X] * val;
 	dpos_y = -info->player.dir[Y] * val;
-	if (info->map[(int)info->player.pos[Y]] \
-		[(int)(info->player.pos[X] + dpos_x * SPEED * 5)] == '0')
-		info->player.pos[X] += dpos_x * SPEED;
-	if (info->map[(int)(info->player.pos[Y] + dpos_y * SPEED * 5)] \
-		[(int)info->player.pos[X]] == '0')
-		info->player.pos[Y] += dpos_y * SPEED;
+	chk_move(info, dpos_x, dpos_y);
 }
 
 void	move_left(t_info *info, double val)
@@ -49,13 +39,7 @@ void	move_left(t_info *info, double val)
 
 	dpos_x = info->player.dir[Y] * val;
 	dpos_y = -info->player.dir[X] * val;
-
-	if (info->map[(int)info->player.pos[Y]] \
-		[(int)(info->player.pos[X] + dpos_x * SPEED * 5)] == '0')
-		info->player.pos[X] += dpos_x * SPEED;
-	if (info->map[(int)(info->player.pos[Y] + dpos_y * SPEED * 5)] \
-		[(int)info->player.pos[X]] == '0')
-		info->player.pos[Y] += dpos_y * SPEED;
+	chk_move(info, dpos_x, dpos_y);
 }
 
 void	move_right(t_info *info, double val)
@@ -65,10 +49,5 @@ void	move_right(t_info *info, double val)
 
 	dpos_x = -info->player.dir[Y] * val;
 	dpos_y = info->player.dir[X] * val;
-	if (info->map[(int)info->player.pos[Y]] \
-		[(int)(info->player.pos[X] + dpos_x * SPEED * 5)] == '0')
-		info->player.pos[X] += dpos_x * SPEED;
-	if (info->map[(int)(info->player.pos[Y] + dpos_y * SPEED * 5)] \
-		[(int)info->player.pos[X]] == '0')
-		info->player.pos[Y] += dpos_y * SPEED;
+	chk_move(info, dpos_x, dpos_y);
 }

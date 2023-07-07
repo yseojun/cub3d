@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/05 17:18:04 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:08:10 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
 
 void	display_minimap(t_info *info);
 
+void	chk_move(t_info *info, double dpos_x, double dpos_y);
 void	move_up(t_info *info, double val);
 void	move_down(t_info *info, double val);
 void	move_left(t_info *info, double val);
