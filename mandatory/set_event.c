@@ -6,13 +6,13 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 18:21:49 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:24:35 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 
-int	press_close_button(t_info *info)
+int	finish_game(t_info *info)
 {
 	mlx_destroy_window(info->mlx, info->win);
 	exit(0);
@@ -111,5 +111,5 @@ int	press_key(int keycode, t_info *info)
 void	set_event(t_info *info)
 {
 	mlx_hook(info->win, 2, 0, &press_key, info);
-	mlx_hook(info->win, CLOSE_BUTTON, 0, &press_close_button, info);
+	mlx_hook(info->win, CLOSE_BUTTON, 0, &finish_game, info);
 }

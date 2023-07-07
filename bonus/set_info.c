@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 11:26:40 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 15:06:07 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ t_info	set_info(char *path)
 
 static void	init_ev(t_info *info)
 {
-	info->ev.mouse = 0;
 	info->ev.push_a = 0;
 	info->ev.push_d = 0;
 	info->ev.push_s = 0;

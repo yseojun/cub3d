@@ -29,6 +29,7 @@ display_minimap.c \
 draw_line.c \
 set_frame.c \
 set_event.c \
+set_mouse_bonus.c \
 event_move_bonus.c \
 manage_door.c \
 event_move_chk.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 14:14:38 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 15:24:24 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ typedef struct s_event
 	int	push_d;
 	int	push_left;
 	int	push_right;
+	int	prev_mouse_x;
+	int	mouse_dx;
 	int	mouse;
 }	t_event;
 
@@ -156,6 +158,7 @@ void	check_valid_map(t_info info);
 void	set_graphic_info(t_info *info, int fd);
 t_img	load_to_image(t_info *info, char *file);
 void	set_player_info(t_info *info);
+void	set_mouse(t_info *info);
 
 void	set_event(t_info *info);
 void	manage_door(t_info *info);
