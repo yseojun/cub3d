@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 18:27:26 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/07 18:41:20 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,21 @@ typedef struct s_tex_info
 
 typedef struct s_sprite
 {
-	struct s_img	frame[4];
-	int				pos[2];
-	int				idx;
+	int		pos[2];
+	double	distance;
+	t_img	frame[4];
+	int		idx;
 }	t_sprite;
+
+typedef struct s_sprite_info
+{
+	double	sprite[2];
+	double	inv_det;
+	double	transform[2];
+	int		sprite_screen_x;
+	int		sprite_height;
+	int		sprite_width;
+}	t_sprite_info;
 
 typedef struct s_event
 {
@@ -141,13 +152,14 @@ typedef struct s_event
 
 typedef struct s_info
 {
+	struct s_sprite	*sprites;
+	int				sprite_cnt;
 	void			*mlx;
 	void			*win;
 	char			**map;
 	int				map_size[2];
+	double			z_buffer[WIDTH];
 	t_event			ev;
-	int				sprite_cnt;
-	struct s_sprite	*sprites;
 	struct s_img	frame;
 	struct s_img	minimap;
 	struct s_img	texture[5];
@@ -157,14 +169,12 @@ typedef struct s_info
 }	t_info;
 
 t_info	set_info(char *path);
-void	set_graphic_info(t_info *info, int fd);
 void	set_map_info(t_info *info, int fd);
 void	check_valid_map(t_info info);
-void	set_sprites(t_info *info);
+void	set_graphic_info(t_info *info, int fd);
+t_img	load_to_image(t_info *info, char *file);
 void	set_player_info(t_info *info);
 void	set_mouse(t_info *info);
-
-t_img	load_to_image(t_info *info, char *file);
 
 void	set_event(t_info *info);
 void	manage_door(t_info *info);
@@ -195,6 +205,6 @@ void	move_down(t_info *info, double val);
 void	move_left(t_info *info, double val);
 void	move_right(t_info *info, double val);
 
-double	get_length(double from_x, double from_y, double to_x, double to_y);
+double	get_distance(double from_x, double from_y, double to_x, double to_y);
 
 #endif
