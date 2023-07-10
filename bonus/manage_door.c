@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_door.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:10:02 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 18:41:20 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:04:20 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,5 @@ static void	display_door(t_info	*info, int min_y, int min_x)
 		info->map[min_y][min_x] = 'O';
 	else
 		info->map[min_y][min_x] = '2';
-	display_3d(info);
-	display_minimap(info);
+	display_frame(info);
 }

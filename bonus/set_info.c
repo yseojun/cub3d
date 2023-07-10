@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 18:23:33 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/10 18:31:06 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_info	set_info(char *path)
 	info.texture[DOOR] = load_to_image(&info, DOOR_FILE_PATH);
 	set_map_info(&info, fd);
 	check_valid_map(info);
-	set_sprites(&info);
 	set_player_info(&info);
+	set_sprites(&info);
 	return (info);
 }
 

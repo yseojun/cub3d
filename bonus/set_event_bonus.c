@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_event_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/10 17:39:48 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:49:47 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static int	release_key(int keycode, t_info *info)
 void    change_sprite(t_info *info, int time)
 {
 	int	i;
-	int	tmp;
 
 	if (time == 0 || time / 5 != 0)
 		return ;
@@ -97,8 +96,7 @@ static int	no_event(t_info *info)
 		rotate(info, -1, 0.1);
 	else if (info->ev.push_right)
 		rotate(info, 1, 0.1);
-	display_3d(info);
-	display_minimap(info);
+	display_frame(info);
 	time++;
 	return (SUCCESS);
 }

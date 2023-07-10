@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_sprites.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:23:11 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/10 17:45:15 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:42:01 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_sprite	*sprites_realloc(t_info *info, int y, int x)
 
 	new_sprite.pos[X] = x + 0.5;
 	new_sprite.pos[Y] = y + 0.5;
-
+	new_sprite.idx = 0;
 	set_sprite_frames(info, &new_sprite, info->map[y][x]);
 	new_sprites = (t_sprite *)malloc(sizeof(t_sprite) * (info->sprite_cnt + 1));
 	new_sprites[info->sprite_cnt] = new_sprite;
@@ -65,18 +65,23 @@ static t_sprite	*sprites_realloc(t_info *info, int y, int x)
 static	void	set_sprite_frames(t_info *info, t_sprite *sprite, char type)
 {
 	int			idx;
-	const char	*file_name;
+	const char	*file_type;
+	char		*file_name;
 	char		*total_name;
-	char		*file_type;
+	char		*frame_num;
+
+	printf("is sprite\n");
 
 	file_type = chk_sprite_type(sprite, type);
 	sprite->frame = (t_img *)malloc(sizeof(t_img) * sprite->frame_cnt);
 	idx = 0;
 	while (idx < sprite->frame_cnt)
 	{
-		file_name = ft_strjoin(file_type, ft_itoa(idx)); // itoa free
+		frame_num = ft_itoa(idx);
+		file_name = ft_strjoin(file_type, frame_num);
 		total_name = ft_strjoin(file_name, ".xpm");
 		sprite->frame[idx] = load_to_image(info, total_name);
+		free(frame_num);
 		free(file_name);
 		free(total_name);
 		idx++;
@@ -85,7 +90,7 @@ static	void	set_sprite_frames(t_info *info, t_sprite *sprite, char type)
 
 static const char	*chk_sprite_type(t_sprite *sprite, char type)
 {
-	if (type == 3)
+	if (type == '3')
 	{
 		sprite->frame_cnt = 4;
 		return ("./textures/mew_idle/mew_idle00");

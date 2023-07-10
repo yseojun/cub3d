@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:25:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 18:41:21 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:07:19 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	display_3d(t_info *info)
 void	display_frame(t_info *info)
 {
 	display_3d(info);
-	// display_sprite(info);
+	display_sprites(info);
 	display_minimap(info);
 }
 

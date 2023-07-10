@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   display_each_sprite_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:17:01 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 19:39:39 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:23:42 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info_bonus.h"
 
 static int	get_sprite_tex_x(t_info *info, t_sprite_info spr, int i, int x);
+static void	put_sprite_color_to_frame(t_info *info, int color, int x, int y);
 static void	draw_sprite_y(t_info *info, t_sprite_info spr, int x, int tex_x, int i);
+static int	get_sprite_color(t_info *info, int tex_x, int tex_y, int i);
 
 void	display_each_sprite(t_info *info, t_sprite_info spr, int i)
 {

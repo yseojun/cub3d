@@ -29,9 +29,12 @@ get_line_height.c \
 set_ray.c \
 display_3d.c \
 display_minimap.c \
+display_sprites.c \
+display_sprites2.c \
+display_each_sprite_bonus.c \
 draw_line.c \
 set_frame.c \
-set_event.c \
+set_event_bonus.c \
 set_mouse_bonus.c \
 event_move_to_bonus.c \
 event_move_rotate_bonus.c \
