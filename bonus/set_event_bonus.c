@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 18:37:02 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/10 17:39:48 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,28 @@ static int	release_key(int keycode, t_info *info)
 	return (SUCCESS);
 }
 
+void    change_sprite(t_info *info, int time)
+{
+	int	i;
+	int	tmp;
+
+	if (time == 0 || time / 5 != 0)
+		return ;
+	i = 0;
+	while (i < info->sprite_cnt)
+	{
+		info->sprites[i].idx++;
+		if (info->sprites[i].idx >= info->sprites[i].frame_cnt)
+			info->sprites[i].idx = 0;
+		i++;
+	}
+}
+
 static int	no_event(t_info *info)
 {
 	static int	time;
 
-	change_sprite(info);
+	change_sprite(info, time);
 	if ((info->ev.push_a && info->ev.push_w)
 		|| (info->ev.push_d && info->ev.push_w)
 		|| (info->ev.push_a && info->ev.push_s)

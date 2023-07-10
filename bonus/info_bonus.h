@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 19:00:28 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/10 17:31:52 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,20 +123,22 @@ typedef struct s_sprite
 {
 	int		pos[2];
 	double	distance;
-	t_img	frame[4];
+	t_img	*frame;
 	int		idx;
+	int		frame_cnt;
 }	t_sprite;
 
 typedef struct s_sprite_info
 {
-	int		drawstart[2];
-	int		drawend[2];
-	double	sprite[2];
-	double	inv_det;
-	double	transform[2];
-	int		sprite_screen_x;
-	int		sprite_height;
-	int		sprite_width;
+	int			drawstart[2];
+	int			drawend[2];
+	double		sprite[2];
+	double		inv_det;
+	double		transform[2];
+	int			sprite_screen_x;
+	int			sprite_height;
+	int			sprite_width;
+	t_sprite	*each;
 }	t_sprite_info;
 
 typedef struct s_event
@@ -210,6 +212,8 @@ void	move_up(t_info *info, double val);
 void	move_down(t_info *info, double val);
 void	move_left(t_info *info, double val);
 void	move_right(t_info *info, double val);
+
+int		is_sprite(char type);
 
 double	get_distance(double from_x, double from_y, double to_x, double to_y);
 
