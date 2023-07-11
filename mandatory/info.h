@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 13:10:53 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 14:44:23 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,10 +141,11 @@ void	check_valid_map(t_info info);
 void	set_graphic_info(t_info *info, int fd);
 void	set_player_info(t_info *info);
 
-void	set_event(t_info *info);
+void	manage_event(t_info *info);
 
 void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);
+int		encode_rgb(int color[3]);
 int		finish_game(t_info *info);
 int		occur_error(char *message);
 
@@ -153,14 +154,14 @@ int		get_line_height(t_info *info, t_ray *ray);
 
 t_ray	set_ray(t_info *info, int x);
 
-void	display_3d(t_info *info);
+void	display_world(t_info *info);
 
-void	_move(t_info *info, double val);
-void	chk_move(t_info *info, double dpos_x, double dpos_y);
+void	move(t_info *info, double val);
 void	move_up(t_info *info, double val);
 void	move_down(t_info *info, double val);
 void	move_left(t_info *info, double val);
 void	move_right(t_info *info, double val);
+void	rotate(t_info *info, int sign, double angle);
 
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
 

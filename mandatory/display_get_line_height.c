@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_line_height.c                                  :+:      :+:    :+:   */
+/*   display_get_line_height.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:43:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/03 17:31:52 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:29:50 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 
-static void	get_perp_wall_dist(t_info *info, t_ray *ray)
-{
-	if (ray->side == X)
-	{
-		ray->perp_wall_dist = (ray->hit[X] - info->player.pos[X]
-				+ (1 - ray->step[X]) / 2) / ray->ray_dir[X];
-	}
-	else
-	{
-		ray->perp_wall_dist = (ray->hit[Y] - info->player.pos[Y]
-				+ (1 - ray->step[Y]) / 2) / ray->ray_dir[Y];
-	}
-}
+static void	get_perp_wall_dist(t_info *info, t_ray *ray);
 
 int	get_line_height(t_info *info, t_ray *ray)
 {
@@ -50,4 +38,18 @@ int	get_line_height(t_info *info, t_ray *ray)
 	}
 	get_perp_wall_dist(info, ray);
 	return ((int)(HEIGHT / ray->perp_wall_dist));
+}
+
+static void	get_perp_wall_dist(t_info *info, t_ray *ray)
+{
+	if (ray->side == X)
+	{
+		ray->perp_wall_dist = (ray->hit[X] - info->player.pos[X]
+				+ (1 - ray->step[X]) / 2) / ray->ray_dir[X];
+	}
+	else
+	{
+		ray->perp_wall_dist = (ray->hit[Y] - info->player.pos[Y]
+				+ (1 - ray->step[Y]) / 2) / ray->ray_dir[Y];
+	}
 }

@@ -8,14 +8,14 @@ set_info_map.c \
 set_info_check_map.c \
 set_info_player.c \
 make_dr_info.c \
-get_line_height.c \
-set_ray.c \
-display_3d.c \
+display_world.c \
+display_set_ray.c \
+display_get_line_height.c \
+display_set_frame.c \
 draw_line.c \
-set_frame.c \
-set_event.c \
-event_move.c \
-event_move_chk.c
+manage_event.c \
+event_move_to.c \
+event_move_rotate.c
 BONUS_SRCS = main.c \
 utils.c \
 set_info.c \
@@ -25,20 +25,19 @@ set_info_map_check_bonus.c \
 set_info_sprites.c \
 set_info_player.c \
 make_dr_info.c \
-get_line_height.c \
-set_ray.c \
-display_3d.c \
+display_world_bonus.c \
+display_set_ray_bonus.c \
+display_get_line_height_bonus.c \
+display_set_frame_bonus.c \
 display_minimap.c \
 display_sprites.c \
 display_sprites2.c \
 display_each_sprite_bonus.c \
 draw_line.c \
-set_frame.c \
-set_event_bonus.c \
-set_mouse_bonus.c \
+manage_event_bonus.c \
 event_move_to_bonus.c \
 event_move_rotate_bonus.c \
-manage_door.c
+manage_door_bonus.c
 OBJS = $(addprefix mandatory/, $(SRCS:.c=.o))\
 	$(GNL:.c=.o)
 BONUS_OBJS = $(addprefix bonus/, $(BONUS_SRCS:.c=.o))\

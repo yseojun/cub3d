@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_event_bonus.c                                  :+:      :+:    :+:   */
+/*   manage_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/10 18:49:47 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 14:42:55 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info_bonus.h"
+#include "info.h"
 
 static int	press_key(int keycode, t_info *info);
 static int	release_key(int keycode, t_info *info);
 static int	no_event(t_info *info);
 
-void	set_event(t_info *info)
+void	manage_event(t_info *info)
 {
 	mlx_hook(info->win, 2, 0, &press_key, info);
 	mlx_hook(info->win, 3, 0, &release_key, info);
-	mlx_hook(info->win, 6, 0, &mouse_move, info);
 	mlx_hook(info->win, CLOSE_BUTTON, 0, &finish_game, info);
 	mlx_loop_hook(info->mlx, &no_event, info);
 }
@@ -39,8 +38,6 @@ static int	press_key(int keycode, t_info *info)
 		info->ev.push_left = TRUE;
 	if (keycode == KEY_RIGHT_ARROW)
 		info->ev.push_right = TRUE;
-	if (keycode == KEY_SPACE)
-		manage_door(info);
 	if (keycode == KEY_ESC)
 		finish_game(info);
 	return (SUCCESS);
@@ -63,27 +60,8 @@ static int	release_key(int keycode, t_info *info)
 	return (SUCCESS);
 }
 
-void    change_sprite(t_info *info, int time)
-{
-	int	i;
-
-	if (time == 0 || time / 5 != 0)
-		return ;
-	i = 0;
-	while (i < info->sprite_cnt)
-	{
-		info->sprites[i].idx++;
-		if (info->sprites[i].idx >= info->sprites[i].frame_cnt)
-			info->sprites[i].idx = 0;
-		i++;
-	}
-}
-
 static int	no_event(t_info *info)
 {
-	static int	time;
-
-	change_sprite(info, time);
 	if ((info->ev.push_a && info->ev.push_w)
 		|| (info->ev.push_d && info->ev.push_w)
 		|| (info->ev.push_a && info->ev.push_s)
@@ -96,7 +74,6 @@ static int	no_event(t_info *info)
 		rotate(info, -1, 0.1);
 	else if (info->ev.push_right)
 		rotate(info, 1, 0.1);
-	display_frame(info);
-	time++;
+	display_world(info);
 	return (SUCCESS);
 }

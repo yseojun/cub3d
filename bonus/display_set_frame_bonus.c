@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_frame.c                                        :+:      :+:    :+:   */
+/*   display_set_frame_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:27:47 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 11:36:16 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 14:31:15 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,26 @@ void	set_frame(t_info *info, t_ray *ray, int x, int line_height)
 		ray->end = HEIGHT - 1;
 	ray->dir = get_directrion(ray);
 	draw_x_frame(info, ray, x, line_height);
+}
+
+static int	get_directrion(t_ray *ray)
+{
+	if (ray->is_door)
+		return (DOOR);
+	if (ray->side == X)
+	{
+		if (ray->ray_dir[X] > 0)
+			return (W);
+		else
+			return (E);
+	}
+	else
+	{
+		if (ray->ray_dir[Y] > 0)
+			return (N);
+		else
+			return (S);
+	}
 }
 
 static void	draw_x_frame(t_info *info, t_ray *ray, int x, int line_height)
@@ -52,18 +72,6 @@ static void	draw_x_frame(t_info *info, t_ray *ray, int x, int line_height)
 	}
 }
 
-static unsigned int	get_color(t_info *info, t_ray *ray, t_tex_info inf)
-{
-	unsigned int	color;
-	int				idx;
-
-	idx = info->texture[ray->dir].height * inf.tex_y + inf.tex_x;
-	color = inf.texture_int[idx];
-	if (ray->side == Y)
-		color = (color >> 1) & 8355711;
-	return (color);
-}
-
 static int	get_tex_x(t_info *info, t_ray *ray)
 {
 	double	wall_x;
@@ -82,22 +90,14 @@ static int	get_tex_x(t_info *info, t_ray *ray)
 	return (tex_x);
 }
 
-static int	get_directrion(t_ray *ray)
+static unsigned int	get_color(t_info *info, t_ray *ray, t_tex_info inf)
 {
-	if (ray->is_door)
-		return (DOOR);
-	if (ray->side == X)
-	{
-		if (ray->ray_dir[X] > 0)
-			return (W);
-		else
-			return (E);
-	}
-	else
-	{
-		if (ray->ray_dir[Y] > 0)
-			return (N);
-		else
-			return (S);
-	}
+	unsigned int	color;
+	int				idx;
+
+	idx = info->texture[ray->dir].height * inf.tex_y + inf.tex_x;
+	color = inf.texture_int[idx];
+	if (ray->side == Y)
+		color = (color >> 1) & 8355711;
+	return (color);
 }

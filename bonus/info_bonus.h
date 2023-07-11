@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 13:44:34 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 14:38:24 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,11 +178,10 @@ void	set_map_info(t_info *info, int fd);
 void	check_valid_map(t_info info);
 void	set_sprites(t_info *info);
 void	set_player_info(t_info *info);
-void	set_mouse(t_info *info);
 
 t_img	load_to_image(t_info *info, char *file);
 
-void	set_event(t_info *info);
+void	manage_event(t_info *info);
 void	manage_door(t_info *info);
 
 void	free_str_arr(char **str_arr);
@@ -197,7 +196,7 @@ int		get_line_height(t_info *info, t_ray *ray);
 t_ray	set_ray(t_info *info, int x);
 
 void	display_frame(t_info *info);
-void	display_3d(t_info *info);
+void	display_world(t_info *info);
 void	display_sprites(t_info *info);
 
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
