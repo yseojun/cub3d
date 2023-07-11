@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 15:52:14 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:10:53 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,8 @@ void	set_event(t_info *info);
 
 void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);
+int		finish_game(t_info *info);
+int		occur_error(char *message);
 
 t_draw	make_dr_info(int from_x, int fromY, int to_x, int to_y);
 int		get_line_height(t_info *info, t_ray *ray);
@@ -161,7 +163,5 @@ void	move_left(t_info *info, double val);
 void	move_right(t_info *info, double val);
 
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
-
-int		finish_game(t_info *info);
 
 #endif

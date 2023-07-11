@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/10 18:06:39 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 13:44:34 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,7 @@ void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);
 int		encode_rgb(int color[3]);
 int		finish_game(t_info *info);
+int		occur_error(char *message);
 
 t_draw	make_dr_info(int from_x, int fromY, int to_x, int to_y);
 int		get_line_height(t_info *info, t_ray *ray);

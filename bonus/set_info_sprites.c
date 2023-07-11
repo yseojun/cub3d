@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:23:11 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/10 18:42:01 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 14:11:47 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static t_sprite	*sprites_realloc(t_info *info, int y, int x)
 	new_sprite.idx = 0;
 	set_sprite_frames(info, &new_sprite, info->map[y][x]);
 	new_sprites = (t_sprite *)malloc(sizeof(t_sprite) * (info->sprite_cnt + 1));
+	if (!new_sprites)
+		exit(occur_error("malloc failed."));
 	new_sprites[info->sprite_cnt] = new_sprite;
 	idx = info->sprite_cnt - 1;
 	while (idx >= 0)
@@ -70,10 +72,10 @@ static	void	set_sprite_frames(t_info *info, t_sprite *sprite, char type)
 	char		*total_name;
 	char		*frame_num;
 
-	printf("is sprite\n");
-
 	file_type = chk_sprite_type(sprite, type);
 	sprite->frame = (t_img *)malloc(sizeof(t_img) * sprite->frame_cnt);
+	if (!sprite->frame)
+		exit(occur_error("malloc failed."));
 	idx = 0;
 	while (idx < sprite->frame_cnt)
 	{
@@ -98,6 +100,8 @@ static const char	*chk_sprite_type(t_sprite *sprite, char type)
 	return ("");
 }
 
+// 이거 다른 데서도 쓸 거면 옮기면 좋겠다! 아니면 static으로
+// 다른 데서도 쓸 거면 type != 'O' 추가해야 할 지도
 int	is_sprite(char type)
 {
 	return (type != '0' && type != ' ' && type != '1' && type != '2');

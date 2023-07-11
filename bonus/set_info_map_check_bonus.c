@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_map.c                                  :+:      :+:    :+:   */
+/*   set_info_map_check_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:27:49 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/04 17:49:50 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:02:35 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "info.h"
+#include "info_bonus.h"
 
 static void	check_edge(t_info info, int y);
 static void	check_around(char **map, int y, int x);
@@ -45,25 +45,25 @@ static void	check_edge(t_info info, int y)
 		while (info.map[y][idx])
 		{
 			if (info.map[y][idx] != '1' && info.map[y][idx] != ' ')
-				exit(EXIT_FAILURE);
+				exit(occur_error("map is not surrounded by walls."));
 			idx++;
 		}
 	}
 	if (info.map[y][0] != '1' && info.map[y][0] != ' ')
-		exit(EXIT_FAILURE);
+		exit(occur_error("map is not surrounded by walls."));
 	if (info.map[y][info.map_size[WID] - 1] != '1'
 		&& info.map[y][info.map_size[WID] - 1] != ' ')
-		exit(EXIT_FAILURE);
+		exit(occur_error("map is not surrounded by walls."));
 }
 
 static void	check_around(char **map, int y, int x)
 {
 	if (map[y][x + 1] == ' ' || map[y][x + 1] == '\0')
-		exit(EXIT_FAILURE);
+		exit(occur_error("map is not surrounded by walls."));
 	if (map[y][x - 1] == ' ' || map[y][x - 1] == '\0')
-		exit(EXIT_FAILURE);
+		exit(occur_error("map is not surrounded by walls."));
 	if (map[y + 1][x] == ' ' || map[y + 1][x] == '\0')
-		exit(EXIT_FAILURE);
+		exit(occur_error("map is not surrounded by walls."));
 	if (map[y - 1][x] == ' ' || map[y - 1][x] == '\0')
-		exit(EXIT_FAILURE);
+		exit(occur_error("map is not surrounded by walls."));
 }

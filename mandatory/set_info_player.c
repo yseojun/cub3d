@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:36:33 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/04 16:07:27 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 14:07:52 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	set_player_info(t_info *info)
 		i++;
 	}
 	if (player_cnt != 1)
-		exit(EXIT_FAILURE);
+		exit(occur_error("no players on the map."));
 }
 
 static t_player	make_player(int x, int y, char dir)

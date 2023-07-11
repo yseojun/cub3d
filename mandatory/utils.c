@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:41:56 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/07 15:51:37 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:02:55 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,10 @@ int	finish_game(t_info *info)
 {
 	mlx_destroy_window(info->mlx, info->win);
 	exit(EXIT_SUCCESS);
+}
+
+int	occur_error(char *message)
+{
+	printf("ERROR: %s\n", message);
+	return (EXIT_FAILURE);
 }

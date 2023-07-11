@@ -6,16 +6,16 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 16:23:52 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 13:50:33 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info.h"
 
-static char		**set_rectangle_map(t_info *info, char **tmp_map);
-static int		get_map_width(char **map);
 static char		**read_map(int fd, char *temp);
 static char		**map_realloc(char **map, char *map_str);
+static int		get_map_width(char **map);
+static void		set_rectangle_map(t_info *info, char **tmp_map);
 
 void	set_map_info(t_info *info, int fd)
 {
@@ -26,7 +26,7 @@ void	set_map_info(t_info *info, int fd)
 	{
 		temp = get_next_line(fd);
 		if (!temp)
-			exit(EXIT_FAILURE);
+			exit(occur_error("Invalid File: invalid map"));
 		if (ft_strncmp(temp, "\n", 2))
 			break ;
 		free(temp);
@@ -34,50 +34,7 @@ void	set_map_info(t_info *info, int fd)
 	tmp_map = read_map(fd, temp);
 	info->map_size[HEI] = str_arr_len(tmp_map);
 	info->map_size[WID] = get_map_width(tmp_map);
-	info->map = set_rectangle_map(info, tmp_map);
-}
-
-static char	**set_rectangle_map(t_info *info, char **tmp_map)
-{
-	char	**map;
-	int		i;
-	int		j;
-
-	map = (char **)malloc(sizeof(char *) * (info->map_size[HEI] + 1));
-	i = 0;
-	map[info->map_size[HEI]] = NULL;
-	while (map[i])
-	{
-		map[i] = (char *)malloc(info->map_size[WID] + 1);
-		j = 0;
-		while (j < info->map_size[WID])
-		{
-			if (j < (int)ft_strlen(tmp_map[i]))
-				map[i][j] = tmp_map[i][j];
-			else
-				map[i][j] = ' ';
-			j++;
-		}
-		map[i][j] = '\0';
-		i++;
-	}
-	return (map);
-}
-
-static int	get_map_width(char **map)
-{
-	int	max_width;
-	int	idx;
-
-	max_width = 0;
-	idx = 0;
-	while (map[idx])
-	{
-		if (max_width < (int)ft_strlen(map[idx]))
-			max_width = ft_strlen(map[idx]);
-		idx++;
-	}
-	return (max_width);
+	set_rectangle_map(info, tmp_map);
 }
 
 static char	**read_map(int fd, char *temp)
@@ -113,6 +70,8 @@ static char	**map_realloc(char **map, char *map_str)
 			height++;
 	}
 	new = (char **)malloc(sizeof(char *) * (height + 2));
+	if (!new)
+		exit(occur_error("malloc failed."));
 	new[height + 1] = NULL;
 	new[height] = ft_strdup(map_str);
 	while (height > 0)
@@ -122,4 +81,48 @@ static char	**map_realloc(char **map, char *map_str)
 	}
 	free_str_arr(map);
 	return (new);
+}
+
+static int	get_map_width(char **map)
+{
+	int	max_width;
+	int	idx;
+
+	max_width = 0;
+	idx = 0;
+	while (map[idx])
+	{
+		if (max_width < (int)ft_strlen(map[idx]))
+			max_width = ft_strlen(map[idx]);
+		idx++;
+	}
+	return (max_width);
+}
+
+static void	set_rectangle_map(t_info *info, char **tmp_map)
+{
+	int		i;
+	int		j;
+
+	info->map = (char **)malloc(sizeof(char *) * (info->map_size[HEI] + 1));
+	if (!info->map)
+		exit(occur_error("malloc failed."));
+	i = 0;
+	info->map[info->map_size[HEI]] = NULL;
+	while (info->map[i])
+	{
+		info->map[i] = (char *)malloc(info->map_size[WID] + 1);
+		if (!info->map[i])
+			exit(occur_error("malloc failed."));
+		j = 0;
+		while (j < info->map_size[WID])
+		{
+			info->map[i][j] = ' ';
+			if (j < (int)ft_strlen(tmp_map[i]))
+				info->map[i][j] = tmp_map[i][j];
+			j++;
+		}
+		info->map[i][j] = '\0';
+		i++;
+	}
 }
