@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:25:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 14:24:10 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:12:56 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ void	display_world(t_info *info)
 	mlx_put_image_to_window(info->mlx, info->win, info->frame.img, 0, 0);
 }
 
-// 이거 어디로 옮길까나!
-void	display_frame(t_info *info)
-{
-	display_world(info);
-	display_sprites(info);
-	display_minimap(info);
-}
-
 static void	display_background(t_info *info)
 {
 	int	i;
@@ -62,14 +54,4 @@ static void	display_background(t_info *info)
 		}
 		i++;
 	}
-}
-
-double	get_distance(double from_x, double from_y, double to_x, double to_y)
-{
-	double	dist_x;
-	double	dist_y;
-
-	dist_x = to_x - from_x;
-	dist_y = to_y - from_y;
-	return (sqrt(pow(dist_x, 2) + pow(dist_y, 2)));
 }

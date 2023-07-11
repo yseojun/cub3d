@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:34:33 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 13:48:05 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:06:29 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,6 @@ static void	put_texture_info(t_info *info, char *buffer)
 	else
 		exit(occur_error("Invalid File: unnecessary content."));
 	free_str_arr(spl);
-}
-
-// 이거 뭔가 다른 파일로 옮기고 싶은데
-t_img	load_to_image(t_info *info, char *file)
-{
-	t_img	new;
-
-	new.img = mlx_xpm_file_to_image(info->mlx, file, &new.width, &new.height);
-	if (!new.img)
-		exit(occur_error("Invalid File: wrong texture file."));
-	new.addr = mlx_get_data_addr(new.img, &new.bits, \
-		&new.line_length, &new.endian);
-	return (new);
 }
 
 static void	put_color_info(int *color, char *clr)

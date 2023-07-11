@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:41:56 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 14:03:07 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:13:12 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,14 @@ int	str_arr_len(char **str_arr)
 	return (idx);
 }
 
-int	encode_rgb(int color[3])
+double	get_distance(double from_x, double from_y, double to_x, double to_y)
 {
-	return (color[0] << 16 | color[1] << 8 | color[2]);
+	double	dist_x;
+	double	dist_y;
+
+	dist_x = to_x - from_x;
+	dist_y = to_y - from_y;
+	return (sqrt(pow(dist_x, 2) + pow(dist_y, 2)));
 }
 
 int	finish_game(t_info *info)

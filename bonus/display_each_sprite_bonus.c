@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:17:01 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/10 18:23:42 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 14:58:15 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,25 @@ void	display_each_sprite(t_info *info, t_sprite_info spr, int i)
 	while (x < spr.drawend[X])
 	{
 		tex_x = get_sprite_tex_x(info, spr, i, x);
-		if (!(spr.transform[Y] > 0 && x > 0 && x < WIDTH
-				&& spr.transform[Y] < info->z_buffer[x]))
-			continue ;
-		draw_sprite_y(info, spr, x, tex_x, i);
+		if (spr.transform[Y] > 0 && x > 0 && x < WIDTH
+				&& spr.transform[Y] < info->z_buffer[x])
+			draw_sprite_y(info, spr, x, tex_x, i);
 		x++;
 	}
+}
+
+static int	get_sprite_tex_x(t_info *info, t_sprite_info spr, int i, int x)
+{
+	int	tex_x;
+	int	tex_width;
+	int	screen_ratio;
+	int	x_ratio;
+
+	tex_width = info->sprites[i].frame[info->sprites[i].idx].width;
+	x_ratio = tex_width / spr.sprite_width;
+	screen_ratio = (-spr.sprite_width / 2 + spr.sprite_screen_x);
+	tex_x = (int)(256 * (x - screen_ratio) * x_ratio);
+	return (tex_x);
 }
 
 static void	draw_sprite_y(t_info *info, t_sprite_info spr, int x, int tex_x, int i)
@@ -52,20 +65,6 @@ static void	draw_sprite_y(t_info *info, t_sprite_info spr, int x, int tex_x, int
 			put_sprite_color_to_frame(info, color, x, y);
 		y++;
 	}
-}
-
-static int	get_sprite_tex_x(t_info *info, t_sprite_info spr, int i, int x)
-{
-	int	tex_x;
-	int	tex_width;
-	int	screen_ratio;
-	int	x_ratio;
-
-	tex_width = info->sprites[i].frame[info->sprites[i].idx].width;
-	x_ratio = tex_width / spr.sprite_width;
-	screen_ratio = (-spr.sprite_width / 2 + spr.sprite_screen_x);
-	tex_x = (int)(256 * (x - screen_ratio) * x_ratio);
-	return (tex_x);
 }
 
 static int	get_sprite_color(t_info *info, int tex_x, int tex_y, int i)

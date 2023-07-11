@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 14:38:32 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 14:47:57 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ int	main(int argc, char *argv[])
 	manage_event(&info);
 	mlx_loop(info.mlx);
 	return (0);
+}
+
+void	display_frame(t_info *info)
+{
+	display_world(info);
+	display_sprites(info);
+	display_minimap(info);
 }
 
 static void	set_mouse(t_info *info)

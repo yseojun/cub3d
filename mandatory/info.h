@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 14:44:23 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:20:49 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,10 @@ typedef struct s_info
 }	t_info;
 
 t_info	set_info(char *path);
+void	set_graphic_info(t_info *info, int fd);
 void	set_map_info(t_info *info, int fd);
 void	check_valid_map(t_info info);
-void	set_graphic_info(t_info *info, int fd);
 void	set_player_info(t_info *info);
-
-void	manage_event(t_info *info);
 
 void	free_str_arr(char **str_arr);
 int		str_arr_len(char **str_arr);
@@ -149,12 +147,12 @@ int		encode_rgb(int color[3]);
 int		finish_game(t_info *info);
 int		occur_error(char *message);
 
-t_draw	make_dr_info(int from_x, int fromY, int to_x, int to_y);
-int		get_line_height(t_info *info, t_ray *ray);
-
-t_ray	set_ray(t_info *info, int x);
-
 void	display_world(t_info *info);
+t_ray	set_ray(t_info *info, int x);
+int		get_line_height(t_info *info, t_ray *ray);
+void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
+
+void	manage_event(t_info *info);
 
 void	move(t_info *info, double val);
 void	move_up(t_info *info, double val);
@@ -163,6 +161,6 @@ void	move_left(t_info *info, double val);
 void	move_right(t_info *info, double val);
 void	rotate(t_info *info, int sign, double angle);
 
-void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
+t_draw	make_dr_info(int from_x, int fromY, int to_x, int to_y);
 
 #endif

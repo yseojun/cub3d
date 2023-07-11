@@ -18,6 +18,7 @@ event_move_to.c \
 event_move_rotate.c
 BONUS_SRCS = main.c \
 utils.c \
+utils_graphic_bonus.c \
 set_info.c \
 set_info_graphic.c \
 set_info_map.c \
@@ -31,7 +32,6 @@ display_get_line_height_bonus.c \
 display_set_frame_bonus.c \
 display_minimap.c \
 display_sprites.c \
-display_sprites2.c \
 display_each_sprite_bonus.c \
 draw_line.c \
 manage_event_bonus.c \

@@ -6,19 +6,15 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:36:50 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/10 18:53:07 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:14:35 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info_bonus.h"
 
+static void	get_sprite_distance(t_info *info);
 static void	sort_sprites(t_info *info);
-static int	get_sprite_color(t_sprite_info spr, int tex_x, int tex_y);
 static void	calculate_sprite(t_info *info, t_sprite_info *spr, int i);
-static void	draw_each_sprite(t_info *info, t_sprite_info spr);
-
-int	get_sprite_tex_x(t_sprite_info spr, int x);
-void	draw_sprite_y(t_info *info, t_sprite_info spr, int tex_x, int x);
 
 void	display_sprites(t_info *info)
 {
@@ -31,7 +27,7 @@ void	display_sprites(t_info *info)
 	while (i < info->sprite_cnt)
 	{
 		calculate_sprite(info, &spr, i);
-		draw_each_sprite(info, spr);
+		display_each_sprite(info, spr, i);
 		i++;
 	}
 }
@@ -65,71 +61,18 @@ static void	calculate_sprite(t_info *info, t_sprite_info *spr, int i)
 		spr->drawend[X] = WIDTH - 1;
 }
 
-static void	draw_each_sprite(t_info *info, t_sprite_info spr)
+static void	get_sprite_distance(t_info *info)
 {
-	int	x;
-	int	tex_x;
+	int	idx;
 
-	x = spr.drawstart[X];
-	while (x < spr.drawend[X])
+	idx = 0;
+	while (idx < info->sprite_cnt)
 	{
-		tex_x = get_sprite_tex_x(spr, x);
-		if (spr.transform[Y] > 0 && x >= 0 && x < WIDTH
-				&& spr.transform[Y] < info->z_buffer[x])
-			draw_sprite_y(info, spr, tex_x, x);
-		x++;
+		info->sprites[idx].distance = get_distance(
+				info->player.pos[X], info->player.pos[Y],
+				info->sprites[idx].pos[X], info->sprites[idx].pos[Y]);
+		idx++;
 	}
-}
-
-void	draw_sprite_y(t_info *info, t_sprite_info spr, int tex_x, int x)
-{
-	char	*tx;
-	int		y;
-	int		tex_y;
-	int		color;
-
-	y = spr.drawstart[Y];
-	printf("%d, %d\n", spr.drawstart[Y], spr.drawend[Y]);
-	while (y < spr.drawend[Y])
-	{
-		tex_y = ((y * 256 - HEIGHT * 128
-					+ spr.sprite_height * 128 * spr.each->frame->height)
-				/ spr.sprite_height) / 256;
-		color = get_sprite_color(spr, tex_x, tex_y);
-		if ((color & 0x00FFFFFF) != 0)
-		{
-			printf("drawing\n");
-			tx = info->frame.addr + y * info->frame.line_length
-				+ x * (info->frame.bits / 8);
-			*(unsigned int *)tx = color;
-		}
-		y++;
-	}
-}
-
-static int	get_sprite_color(t_sprite_info spr, int tex_x, int tex_y)
-{
-	int	color;
-	int	*tx;
-
-	tx = (int *)spr.each->frame->addr;
-	color = tx[tex_y * spr.each->frame->width + tex_x];
-	printf("%d, %d\n", color, tex_y * spr.each->frame->width + tex_x);
-	return (color);
-}
-
-int	get_sprite_tex_x(t_sprite_info spr, int x)
-{
-	int	tex_x;
-	int	tex_width;
-	int	screen_ratio;
-	int	x_ratio;
-
-	tex_width = spr.each->frame[spr.each->idx].width;
-	x_ratio = tex_width / spr.sprite_width;
-	screen_ratio = (-spr.sprite_width / 2 + spr.sprite_screen_x);
-	tex_x = (int)(256 * (x - screen_ratio) * x_ratio);
-	return (tex_x);
 }
 
 static void	sort_sprites(t_info *info)
@@ -137,7 +80,7 @@ static void	sort_sprites(t_info *info)
 	int			i;
 	int			j;
 	t_sprite	temp;
-
+	
 	i = 0;
 	while (i < info->sprite_cnt - 1)
 	{

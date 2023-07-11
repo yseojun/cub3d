@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:23:11 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 14:11:47 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:07:48 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,4 @@ static const char	*chk_sprite_type(t_sprite *sprite, char type)
 		return ("./textures/mew_idle/mew_idle00");
 	}
 	return ("");
-}
-
-// 이거 다른 데서도 쓸 거면 옮기면 좋겠다! 아니면 static으로
-// 다른 데서도 쓸 거면 type != 'O' 추가해야 할 지도
-int	is_sprite(char type)
-{
-	return (type != '0' && type != ' ' && type != '1' && type != '2');
 }
