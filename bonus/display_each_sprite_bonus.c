@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:17:01 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 14:58:15 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 17:08:02 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ static int	get_sprite_color(t_info *info, int tex_x, int tex_y, int i);
 
 void	display_each_sprite(t_info *info, t_sprite_info spr, int i)
 {
-	int	x;
-	int	tex_x;
+	int		x;
+	int		tex_x;
+	void	*sprite_frame;
 
 	x = spr.drawstart[X];
 	while (x < spr.drawend[X])
@@ -31,6 +32,8 @@ void	display_each_sprite(t_info *info, t_sprite_info spr, int i)
 			draw_sprite_y(info, spr, x, tex_x, i);
 		x++;
 	}
+	sprite_frame = info->sprites[i].frame[info->sprites[i].idx].img;
+	mlx_put_image_to_window(info->mlx, info->win, sprite_frame, spr.sprite_screen_x, HEIGHT / 2);
 }
 
 static int	get_sprite_tex_x(t_info *info, t_sprite_info spr, int i, int x)
@@ -53,6 +56,8 @@ static void	draw_sprite_y(t_info *info, t_sprite_info spr, int x, int tex_x, int
 	int	d;
 	int	tex_y;
 	int	color;
+	
+	printf("Y drawstart : %d\n, drawend : %d\n", spr.drawstart[Y], spr.drawend[Y]);
 
 	y = spr.drawstart[Y];
 	while (y < spr.drawend[Y])
