@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 13:50:33 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/11 15:26:35 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	**read_map(int fd, char *temp)
 		if (!temp)
 			break ;
 		if (ft_strncmp(temp, "\n", 2) == 0)
-			exit(EXIT_FAILURE);
+			exit(occur_error("invalid map"));
 	}
 	return (map);
 }

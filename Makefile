@@ -16,24 +16,24 @@ draw_line.c \
 manage_event.c \
 event_move_to.c \
 event_move_rotate.c
-BONUS_SRCS = main.c \
-utils.c \
+BONUS_SRCS = main_bonus.c \
+utils_bonus.c \
 utils_graphic_bonus.c \
-set_info.c \
-set_info_graphic.c \
-set_info_map.c \
+set_info_bonus.c \
+set_info_graphic_bonus.c \
+set_info_map_bonus.c \
 set_info_map_check_bonus.c \
-set_info_sprites.c \
-set_info_player.c \
-make_dr_info.c \
+set_info_sprites_bonus.c \
+set_info_player_bonus.c \
+make_dr_info_bonus.c \
 display_world_bonus.c \
 display_set_ray_bonus.c \
 display_get_line_height_bonus.c \
 display_set_frame_bonus.c \
-display_minimap.c \
-display_sprites.c \
+display_minimap_bonus.c \
+display_sprites_bonus.c \
 display_each_sprite_bonus.c \
-draw_line.c \
+draw_line_bonus.c \
 manage_event_bonus.c \
 event_move_to_bonus.c \
 event_move_rotate_bonus.c \
