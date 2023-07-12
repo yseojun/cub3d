@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:36:50 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/12 15:29:06 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:01:29 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 static void	get_sprite_distance(t_info *info);
 static void	sort_sprites(t_info *info);
-static void	calculate_sprite(t_info *info, t_sprite_info *spr, int i);
+static void	calculate_sprite(t_info *info, t_spr_info *spr, int i);
+static void	calculrate_sprite_draw(t_spr_info *spr);
 
 void	display_sprites(t_info *info)
 {
-	t_sprite_info	spr;
-	int				i;
+	t_spr_info	spr;
+	int			i;
 
 	get_sprite_distance(info);
 	sort_sprites(info);
@@ -27,40 +28,41 @@ void	display_sprites(t_info *info)
 	while (i < info->sprite_cnt)
 	{
 		calculate_sprite(info, &spr, i);
+		calculrate_sprite_draw(&spr);
 		display_each_sprite(info, spr, i);
 		i++;
 	}
 }
 
-static void	calculate_sprite(t_info *info, t_sprite_info *spr, int i)
+static void	calculate_sprite(t_info *info, t_spr_info *spr, int i)
 {
 	spr->each = &info->sprites[i];
 	spr->sprite[X] = spr->each->pos[X] - info->player.pos[X];
 	spr->sprite[Y] = spr->each->pos[Y] - info->player.pos[Y];
-	// 카메라 매트릭스의 역수?
-	// 스프라이트의 방향이 플레이어를 기준으로 회전한 것처럼 보이게 하기 위해 필요하다?
 	spr->inv_det = 1.0 / (info->player.plane[X] * info->player.dir[Y]
 			- info->player.plane[Y] * info->player.dir[X]);
 	spr->transform[X] = spr->inv_det * (info->player.dir[Y] * spr->sprite[X]
 			- info->player.dir[X] * spr->sprite[Y]);
 	spr->transform[Y] = spr->inv_det * (info->player.plane[X] * spr->sprite[Y]
-			- info->player.plane[Y] * spr->sprite[X]); // 화면의 깊이?
-	// 화면 상에서 스프라이트의 x 위치
+			- info->player.plane[Y] * spr->sprite[X]);
 	spr->v_move_screen = (int)(spr->each->v_move / spr->transform[Y]);
 	spr->sprite_screen_x = (int)((WIDTH / 2)
 			* (1 + spr->transform[X] / spr->transform[Y]));
-	// 화면에서 스프라이트의 높이
-	spr->sprite_height = abs((int)(HEIGHT / spr->transform[Y])) / spr->each->v_div;
-	// Y의 drawstart 및 end 계산
-	spr->drawstart[Y] = -spr->sprite_height / 2 + HEIGHT / 2 + spr->v_move_screen;
+	spr->sprite_height = abs((int)(HEIGHT / spr->transform[Y]))
+		/ spr->each->v_div;
+	spr->sprite_width = abs((int)(HEIGHT / spr->transform[Y]))
+		/ spr->each->u_div;
+}
+
+static void	calculrate_sprite_draw(t_spr_info *spr)
+{
+	spr->drawstart[Y] = -spr->sprite_height / 2 + HEIGHT / 2
+		+ spr->v_move_screen;
 	if (spr->drawstart[Y] < 0)
 		spr->drawstart[Y] = 0;
 	spr->drawend[Y] = spr->sprite_height / 2 + HEIGHT / 2 + spr->v_move_screen;
 	if (spr->drawend[Y] >= HEIGHT)
 		spr->drawend[Y] = HEIGHT - 1;
-	// 화면에서 스프라이트의 너비
-	spr->sprite_width = abs((int)(HEIGHT / spr->transform[Y])) / spr->each->u_div;
-	// X의 drawstart 및 end 계산
 	spr->drawstart[X] = -spr->sprite_width / 2 + spr->sprite_screen_x;
 	if (spr->drawstart[X] < 0)
 		spr->drawstart[X] = 0;
@@ -88,7 +90,7 @@ static void	sort_sprites(t_info *info)
 	int			i;
 	int			j;
 	t_sprite	temp;
-	
+
 	i = 0;
 	while (i < info->sprite_cnt - 1)
 	{

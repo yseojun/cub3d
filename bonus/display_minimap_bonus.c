@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_minimap.c                                  :+:      :+:    :+:   */
+/*   display_minimap_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:18:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/07 15:31:02 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/12 16:50:22 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ static void	put_minimap_color(t_info *info, char now, int mini_y, int mini_x)
 	mini = (int *)info->minimap.addr;
 	if (now == 0 || now == ' ')
 		mini[mini_y * 200 + mini_x] = BLACK;
-	else if (now == '0' || now == 'O')
-		mini[mini_y * 200 + mini_x] = RIGHT_GREEN;
 	else if (now == '1')
 		mini[mini_y * 200 + mini_x] = GREEN;
 	else if (now == '2')
 		mini[mini_y * 200 + mini_x] = BLUE;
 	else if (now == 'm')
 		mini[mini_y * 200 + mini_x] = RED;
+	else
+		mini[mini_y * 200 + mini_x] = RIGHT_GREEN;
 }

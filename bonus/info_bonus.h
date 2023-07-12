@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/12 15:28:11 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:59:41 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ typedef struct s_sprite_info
 	int			sprite_width;
 	int			v_move_screen;
 	t_sprite	*each;
-}	t_sprite_info;
+}	t_spr_info;
 
 typedef struct s_event
 {
@@ -201,7 +201,7 @@ int		get_line_height(t_info *info, t_ray *ray);
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
 
 void	display_sprites(t_info *info);
-void	display_each_sprite(t_info *info, t_sprite_info spr, int i);
+void	display_each_sprite(t_info *info, t_spr_info spr, int i);
 
 void	display_minimap(t_info *info);
 

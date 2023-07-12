@@ -16,6 +16,7 @@ draw_line.c \
 manage_event.c \
 event_move_to.c \
 event_move_rotate.c
+
 BONUS_SRCS = main_bonus.c \
 utils_bonus.c \
 utils_graphic_bonus.c \
@@ -38,6 +39,7 @@ manage_event_bonus.c \
 event_move_to_bonus.c \
 event_move_rotate_bonus.c \
 manage_door_bonus.c
+
 OBJS = $(addprefix mandatory/, $(SRCS:.c=.o))\
 	$(GNL:.c=.o)
 BONUS_OBJS = $(addprefix bonus/, $(BONUS_SRCS:.c=.o))\
@@ -49,18 +51,21 @@ gnl/get_next_line_utils_bonus.c
 CC = cc
 FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
+ifdef BONUS
+	OBJ = $(BONUS_OBJS)
+else
+	OBJ = $(OBJS)
+endif
 
 all : $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJ)
 	make -C libft all -j6
 	make -C mlx all -j6
 	$(CC) $(FLAGS) $^ libft/libft.a -Lmlx -lmlx -framework OpenGL -framework Appkit -o $@
 
-bonus : $(BONUS_OBJS)
-	make -C libft all -j6
-	make -C mlx all -j6
-	$(CC) $(FLAGS) $^ libft/libft.a -Lmlx -lmlx -framework OpenGL -framework Appkit -o $(NAME)
+bonus :
+	make BONUS=1 all
 
 %.o: %.c
 	$(CC) $(FLAGS) -Imlx -c $< -o $@

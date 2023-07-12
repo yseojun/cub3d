@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:23:11 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/12 15:26:20 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:49:21 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,27 @@ static const char	*chk_sprite_type(t_sprite *sprite, char type)
 {
 	if (type == '3')
 	{
-		sprite->frame_cnt = 4;
-		sprite->u_div = 0.5;
-		sprite->v_div = 0.5;
-		sprite->v_move = 100;
+		sprite->frame_cnt = 10;
+		sprite->u_div = 1.5;
+		sprite->v_div = 1.5;
+		sprite->v_move = 500;
 		return ("./textures/mew_idle/mew_idle00");
+	}
+	else if (type == '4')
+	{
+		sprite->frame_cnt = 13;
+		sprite->u_div = 1.5;
+		sprite->v_div = 1.5;
+		sprite->v_move = 500;
+		return ("./textures/cat_stretching/cat_stretching_00");
+	}
+	else if (type == '5')
+	{
+		sprite->frame_cnt = 19;
+		sprite->u_div = 1.5;
+		sprite->v_div = 1.5;
+		sprite->v_move = 500;
+		return ("./textures/cat_lying/cat_lying_00");
 	}
 	return ("");
 }
