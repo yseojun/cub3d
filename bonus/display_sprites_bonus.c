@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_sprites_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:36:50 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 16:14:44 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:29:06 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,20 @@ static void	calculate_sprite(t_info *info, t_sprite_info *spr, int i)
 	spr->transform[Y] = spr->inv_det * (info->player.plane[X] * spr->sprite[Y]
 			- info->player.plane[Y] * spr->sprite[X]); // 화면의 깊이?
 	// 화면 상에서 스프라이트의 x 위치
+	spr->v_move_screen = (int)(spr->each->v_move / spr->transform[Y]);
 	spr->sprite_screen_x = (int)((WIDTH / 2)
 			* (1 + spr->transform[X] / spr->transform[Y]));
 	// 화면에서 스프라이트의 높이
-	spr->sprite_height = abs((int)(HEIGHT / spr->transform[Y]));
+	spr->sprite_height = abs((int)(HEIGHT / spr->transform[Y])) / spr->each->v_div;
 	// Y의 drawstart 및 end 계산
-	spr->drawstart[Y] = -spr->sprite_height / 2 + HEIGHT / 2;
+	spr->drawstart[Y] = -spr->sprite_height / 2 + HEIGHT / 2 + spr->v_move_screen;
 	if (spr->drawstart[Y] < 0)
 		spr->drawstart[Y] = 0;
-	spr->drawend[Y] = spr->sprite_height / 2 + HEIGHT / 2;
+	spr->drawend[Y] = spr->sprite_height / 2 + HEIGHT / 2 + spr->v_move_screen;
 	if (spr->drawend[Y] >= HEIGHT)
 		spr->drawend[Y] = HEIGHT - 1;
 	// 화면에서 스프라이트의 너비
-	spr->sprite_width = abs((int)(HEIGHT / spr->transform[Y]));
+	spr->sprite_width = abs((int)(HEIGHT / spr->transform[Y])) / spr->each->u_div;
 	// X의 drawstart 및 end 계산
 	spr->drawstart[X] = -spr->sprite_width / 2 + spr->sprite_screen_x;
 	if (spr->drawstart[X] < 0)

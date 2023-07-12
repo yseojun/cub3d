@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_each_sprite_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:17:01 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 17:08:02 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:29:33 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	display_each_sprite(t_info *info, t_sprite_info spr, int i)
 		x++;
 	}
 	sprite_frame = info->sprites[i].frame[info->sprites[i].idx].img;
-	mlx_put_image_to_window(info->mlx, info->win, sprite_frame, spr.sprite_screen_x, HEIGHT / 2);
 }
 
 static int	get_sprite_tex_x(t_info *info, t_sprite_info spr, int i, int x)
@@ -56,13 +55,11 @@ static void	draw_sprite_y(t_info *info, t_sprite_info spr, int x, int tex_x, int
 	int	d;
 	int	tex_y;
 	int	color;
-	
-	printf("Y drawstart : %d\n, drawend : %d\n", spr.drawstart[Y], spr.drawend[Y]);
 
 	y = spr.drawstart[Y];
 	while (y < spr.drawend[Y])
 	{
-		d = y * 256 - HEIGHT * 128 + spr.sprite_height * 128;
+		d = (y - spr.v_move_screen) * 256 - HEIGHT * 128 + spr.sprite_height * 128;
 		tex_y = ((d * info->sprites[i].frame->height) / spr.sprite_height)
 			/ 256;
 		color = get_sprite_color(info, tex_x, tex_y, i);

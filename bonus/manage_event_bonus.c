@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_event_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 14:37:53 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:35:59 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,14 @@ static void	change_sprite(t_info *info, int time)
 {
 	int	i;
 
-	if (time == 0 || time / 5 != 0)
+	if (time == 0 || time % 5 != 0)
 		return ;
 	i = 0;
 	while (i < info->sprite_cnt)
 	{
+		// printf("idx : %d\n", info->sprites[i].idx);
 		info->sprites[i].idx++;
-		if (info->sprites[i].idx >= info->sprites[i].frame_cnt)
+		if (info->sprites[i].idx == info->sprites[i].frame_cnt)
 			info->sprites[i].idx = 0;
 		i++;
 	}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_info_sprites.c                                 :+:      :+:    :+:   */
+/*   set_info_sprites_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:23:11 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 15:07:48 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:26:20 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,9 @@ static const char	*chk_sprite_type(t_sprite *sprite, char type)
 	if (type == '3')
 	{
 		sprite->frame_cnt = 4;
+		sprite->u_div = 0.5;
+		sprite->v_div = 0.5;
+		sprite->v_move = 100;
 		return ("./textures/mew_idle/mew_idle00");
 	}
 	return ("");

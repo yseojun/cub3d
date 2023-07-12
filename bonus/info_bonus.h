@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 15:20:44 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:28:11 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,11 +121,14 @@ typedef struct s_tex_info
 
 typedef struct s_sprite
 {
-	int		pos[2];
+	double	pos[2];
 	double	distance;
 	t_img	*frame;
 	int		idx;
 	int		frame_cnt;
+	double	u_div;
+	double	v_div;
+	double	v_move;
 }	t_sprite;
 
 typedef struct s_sprite_info
@@ -138,6 +141,7 @@ typedef struct s_sprite_info
 	int			sprite_screen_x;
 	int			sprite_height;
 	int			sprite_width;
+	int			v_move_screen;
 	t_sprite	*each;
 }	t_sprite_info;
 

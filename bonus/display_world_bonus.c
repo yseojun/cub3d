@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_world_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:25:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 17:00:32 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:04:11 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	display_world(t_info *info)
 		info->z_buffer[x] = ray.perp_wall_dist;
 		x++;
 	}
-	mlx_put_image_to_window(info->mlx, info->win, info->frame.img, 0, 0);
 }
 
 static void	display_background(t_info *info)
