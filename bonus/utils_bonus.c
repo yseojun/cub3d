@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:41:56 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 15:13:12 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:38:53 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ double	get_distance(double from_x, double from_y, double to_x, double to_y)
 
 	dist_x = to_x - from_x;
 	dist_y = to_y - from_y;
-	return (sqrt(pow(dist_x, 2) + pow(dist_y, 2)));
+	return (pow(dist_x, 2) + pow(dist_y, 2));
 }
 
 int	finish_game(t_info *info)
