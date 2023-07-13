@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/12 15:04:16 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:21:39 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 	t_info	info;
 
 	if (argc != 2)
-		return (occur_error("Invalid Argument."));
+		return (occur_error(INVALID_ARGU));
 	info = set_info(argv[1]);
 	info.win = mlx_new_window(info.mlx, WIDTH, HEIGHT, "cub3d");
 	set_mouse(&info);

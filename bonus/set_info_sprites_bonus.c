@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_sprites_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:23:11 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/12 16:49:21 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:42:39 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static t_sprite	*sprites_realloc(t_info *info, int y, int x)
 	set_sprite_frames(info, &new_sprite, info->map[y][x]);
 	new_sprites = (t_sprite *)malloc(sizeof(t_sprite) * (info->sprite_cnt + 1));
 	if (!new_sprites)
-		exit(occur_error("malloc failed."));
+		exit(occur_error(MALLOC_FAILED));
 	new_sprites[info->sprite_cnt] = new_sprite;
 	idx = info->sprite_cnt - 1;
 	while (idx >= 0)
@@ -75,7 +75,7 @@ static	void	set_sprite_frames(t_info *info, t_sprite *sprite, char type)
 	file_type = chk_sprite_type(sprite, type);
 	sprite->frame = (t_img *)malloc(sizeof(t_img) * sprite->frame_cnt);
 	if (!sprite->frame)
-		exit(occur_error("malloc failed."));
+		exit(occur_error(MALLOC_FAILED));
 	idx = 0;
 	while (idx < sprite->frame_cnt)
 	{
@@ -108,7 +108,7 @@ static const char	*chk_sprite_type(t_sprite *sprite, char type)
 		sprite->v_move = 500;
 		return ("./textures/cat_stretching/cat_stretching_00");
 	}
-	else if (type == '5')
+	else
 	{
 		sprite->frame_cnt = 19;
 		sprite->u_div = 1.5;
@@ -116,5 +116,4 @@ static const char	*chk_sprite_type(t_sprite *sprite, char type)
 		sprite->v_move = 500;
 		return ("./textures/cat_lying/cat_lying_00");
 	}
-	return ("");
 }

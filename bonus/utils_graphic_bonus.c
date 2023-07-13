@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_graphic_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:05:47 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/12 16:47:21 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:14:52 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_img	load_to_image(t_info *info, char *file)
 
 	new.img = mlx_xpm_file_to_image(info->mlx, file, &new.width, &new.height);
 	if (!new.img)
-	{
-		printf("file name : %s\n", file);
-		exit(occur_error("Invalid File: wrong texture file."));
-	}
+		exit(occur_error(INVALID_TEXTURE));
 	new.addr = mlx_get_data_addr(new.img, &new.bits, \
 		&new.line_length, &new.endian);
 	return (new);
@@ -32,7 +29,6 @@ int	encode_rgb(int color[3])
 	return (color[0] << 16 | color[1] << 8 | color[2]);
 }
 
-// set_info_sprites.c 외에도 쓸 거면 type != 'O' 추가해야 할 지도
 int	is_sprite(char type)
 {
 	return (type != '0' && type != ' ' && type != '1' && type != '2');

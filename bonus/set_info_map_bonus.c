@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_info_map.c                                     :+:      :+:    :+:   */
+/*   set_info_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 15:26:10 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/13 12:24:52 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	set_map_info(t_info *info, int fd)
 	{
 		temp = get_next_line(fd);
 		if (!temp)
-			exit(occur_error("invalid map"));
+			exit(occur_error(INVALID_MAP));
 		if (ft_strncmp(temp, "\n", 2))
 			break ;
 		free(temp);
@@ -53,7 +53,7 @@ static char	**read_map(int fd, char *temp)
 		if (!temp)
 			break ;
 		if (ft_strncmp(temp, "\n", 2) == 0)
-			exit(occur_error("invalid map"));
+			exit(occur_error(INVALID_MAP));
 	}
 	return (map);
 }
@@ -71,7 +71,7 @@ static char	**map_realloc(char **map, char *map_str)
 	}
 	new = (char **)malloc(sizeof(char *) * (height + 2));
 	if (!new)
-		exit(occur_error("malloc failed."));
+		exit(occur_error(MALLOC_FAILED));
 	new[height + 1] = NULL;
 	new[height] = ft_strdup(map_str);
 	while (height > 0)
@@ -106,14 +106,14 @@ static void	set_rectangle_map(t_info *info, char **tmp_map)
 
 	info->map = (char **)malloc(sizeof(char *) * (info->map_size[HEI] + 1));
 	if (!info->map)
-		exit(occur_error("malloc failed."));
+		exit(occur_error(MALLOC_FAILED));
 	i = 0;
 	info->map[info->map_size[HEI]] = NULL;
 	while (info->map[i])
 	{
 		info->map[i] = (char *)malloc(info->map_size[WID] + 1);
 		if (!info->map[i])
-			exit(occur_error("malloc failed."));
+			exit(occur_error(MALLOC_FAILED));
 		j = 0;
 		while (j < info->map_size[WID])
 		{

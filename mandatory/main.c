@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:06:19 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/11 14:38:42 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/13 12:32:28 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char *argv[])
 	t_info	info;
 
 	if (argc != 2)
-		return (occur_error("Invalid Argument."));
+		return (occur_error(INVALID_ARGU));
 	info = set_info(argv[1]);
 	info.win = mlx_new_window(info.mlx, WIDTH, HEIGHT, "cub3d");
 	display_world(&info);

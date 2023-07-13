@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 14:13:33 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/13 12:35:34 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ t_info	set_info(char *path)
 
 	info.mlx = mlx_init();
 	if (!info.mlx)
-		exit(occur_error("mlx_init() failed."));
+		exit(occur_error(MLX_INIT_FAILED));
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		exit(occur_error("Invalid file path."));
+		exit(occur_error(INVALID_FILE));
 	init_ev(&info);
 	set_graphic_info(&info, fd);
 	set_map_info(&info, fd);
