@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_graphic_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:34:33 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/13 12:31:15 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/13 16:10:16 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	set_graphic_info(t_info *info, int fd)
 {
 	int		cnt;
 	char	*buffer;
+	char	*save;
 
 	info->texture[DOOR] = load_to_image(info, DOOR_FILE_PATH);
 	cnt = 0;
@@ -28,9 +29,14 @@ void	set_graphic_info(t_info *info, int fd)
 		if (buffer == NULL)
 			exit(occur_error(INVALID_FORMAT));
 		if (!ft_strncmp(buffer, "\n", 2))
+		{
+			free(buffer);
 			continue ;
+		}
+		save = buffer;
 		buffer = ft_strtrim(buffer, "\n");
 		put_texture_info(info, buffer);
+		free(save);
 		free(buffer);
 		cnt++;
 	}

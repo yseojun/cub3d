@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/13 12:24:52 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/13 16:02:17 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	set_map_info(t_info *info, int fd)
 	info->map_size[HEI] = str_arr_len(tmp_map);
 	info->map_size[WID] = get_map_width(tmp_map);
 	set_rectangle_map(info, tmp_map);
+	free_str_arr(tmp_map);
 }
 
 static char	**read_map(int fd, char *temp)

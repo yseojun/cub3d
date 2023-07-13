@@ -49,7 +49,7 @@ GNL = gnl/get_next_line_bonus.c \
 gnl/get_next_line_utils_bonus.c
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror -g
 
 ifdef BONUS
 	OBJ = $(BONUS_OBJS)
