@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 17:18:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/12 16:50:22 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:48:30 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static char	get_map_inf(t_info *info, int mini_y, int mini_x)
 		return ('m');
 	map_y = floor(info->player.pos[Y] - ((double)5 / 100 * (100 - mini_y)));
 	map_x = floor(info->player.pos[X] - ((double)5 / 100 * (100 - mini_x)));
-	if (map_y < 0 || map_y >= 8 || map_x < 0 || map_x >= 10)
+	if (map_y < 0 || map_y >= info->map_size[HEI]
+		|| map_x < 0 || map_x >= info->map_size[WID])
 		return (0);
 	else
 		return (info->map[map_y][map_x]);
