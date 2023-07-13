@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/13 12:30:21 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/13 16:14:40 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@
 # define MALLOC_FAILED "malloc failed."
 # define INVALID_WALL "map is not surrounded by walls."
 # define INVALID_PLAYER "map must contain one player."
-# define INVALID_MAP_CAHR "map must only contain numbers [0-5], [N,S,W,E] and space."
+# define INVALID_MAP_CAHR "map must only contain numbers [0-5], \
+							[N,S,W,E] and space."
 # define INVALID_TEXTURE "invalid texture file"
 
 typedef struct s_player

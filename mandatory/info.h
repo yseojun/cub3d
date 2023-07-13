@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/13 12:36:50 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/13 16:14:58 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@
 # define MLX_INIT_FAILED "mlx_init() failed."
 # define INVALID_PLAYER "map must contain one player."
 # define INVALID_FILE "invalid file path."
-
-# define INVALID_MAP_CAHR "map must only contain numbers [0-1], [N,S,W,E] and space."
+# define INVALID_MAP_CAHR "map must only contain numbers [0-1], \
+							[N,S,W,E] and space."
 
 typedef struct s_player
 {
