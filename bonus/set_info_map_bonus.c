@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:34:03 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/13 16:02:17 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:49:12 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static void	set_rectangle_map(t_info *info, char **tmp_map)
 		exit(occur_error(MALLOC_FAILED));
 	i = 0;
 	info->map[info->map_size[HEI]] = NULL;
-	while (info->map[i])
+	while (tmp_map[i])
 	{
 		info->map[i] = (char *)malloc(info->map_size[WID] + 1);
 		if (!info->map[i])
