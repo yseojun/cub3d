@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:17:01 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/20 14:15:39 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:28:06 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	get_sprite_tex_x(t_spr_info spr, int x)
 {
 	int	tex_x;
 
-	tex_x = (int)(256 * (x - spr.drawstart[X])
+	tex_x = (int)(256 * (x - (-spr.sprite_width / 2 + spr.sprite_screen_x))
 			* spr.each->frame->width / spr.sprite_width) / 256;
 	return (tex_x);
 }
