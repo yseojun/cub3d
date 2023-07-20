@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/13 16:14:58 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:20:51 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define KEY_SPACE 49
 # define KEY_ESC 53
 # define CLOSE_BUTTON 17
+# define KEY_PRESS 2
+# define KEY_RELEASE 3
 
 # define WIDTH 2000
 # define HEIGHT 1000
@@ -67,7 +69,7 @@
 # define INVALID_PLAYER "map must contain one player."
 # define INVALID_FILE "invalid file path."
 # define INVALID_MAP_CAHR "map must only contain numbers [0-1], \
-							[N,S,W,E] and space."
+[N,S,W,E] and space."
 
 typedef struct s_player
 {

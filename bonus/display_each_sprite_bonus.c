@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_each_sprite_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:17:01 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/12 17:03:24 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:24:57 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	display_each_sprite(t_info *info, t_spr_info spr, int i)
 	x = spr.drawstart[X];
 	while (x < spr.drawend[X])
 	{
-		tex_x = get_sprite_tex_x(spr, x);
 		if (spr.transform[Y] > 0 && x > 0 && x < WIDTH
 			&& spr.transform[Y] < info->z_buffer[x])
+		{
+			tex_x = get_sprite_tex_x(spr, x);
 			draw_sprite_y(info, spr, x, tex_x);
+		}
 		x++;
 	}
 	sprite_frame = info->sprites[i].frame[info->sprites[i].idx].img;

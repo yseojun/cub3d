@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/13 16:14:40 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:21:49 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@
 # define KEY_SPACE 49
 # define KEY_ESC 53
 # define CLOSE_BUTTON 17
+# define KEY_PRESS 2
+# define KEY_RELEASE 3
+# define MOUSE_MOVE 6
 
 # define MINIMAP_ROOM 18
 # define MINIMAP_DIVIER	2
@@ -73,9 +76,9 @@
 # define MALLOC_FAILED "malloc failed."
 # define INVALID_WALL "map is not surrounded by walls."
 # define INVALID_PLAYER "map must contain one player."
-# define INVALID_MAP_CAHR "map must only contain numbers [0-5], \
-							[N,S,W,E] and space."
 # define INVALID_TEXTURE "invalid texture file"
+# define INVALID_MAP_CAHR "map must only contain numbers [0-5], \
+[N,S,W,E] and space."
 
 typedef struct s_player
 {
@@ -168,7 +171,6 @@ typedef struct s_event
 	int	push_right;
 	int	prev_mouse_x;
 	int	mouse_dx;
-	int	mouse;
 }	t_event;
 
 typedef struct s_info

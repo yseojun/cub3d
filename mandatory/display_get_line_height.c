@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:43:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 14:29:50 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/20 11:19:05 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	get_line_height(t_info *info, t_ray *ray)
 			ray->side = Y;
 		}
 		if (info->map[ray->hit[Y]][ray->hit[X]] == '1')
-			is_hit = 1;
+			is_hit = TRUE;
 	}
 	get_perp_wall_dist(info, ray);
 	return ((int)(HEIGHT / ray->perp_wall_dist));

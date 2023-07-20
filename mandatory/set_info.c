@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/13 16:23:17 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:19:26 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,4 @@ static void	set_imgs(t_info *info)
 	info->frame.img = mlx_new_image(info->mlx, WIDTH, HEIGHT);
 	info->frame.addr = mlx_get_data_addr(info->frame.img, &info->frame.bits, \
 		&info->frame.line_length, &info->frame.endian);
-	info->minimap.img = mlx_new_image(info->mlx, 200, 200);
-	info->minimap.addr = mlx_get_data_addr(info->minimap.img, \
-		&info->minimap.bits, &info->minimap.line_length, &info->minimap.endian);
 }

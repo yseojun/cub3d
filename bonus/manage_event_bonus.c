@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_event_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/12 16:52:32 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:18:12 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void	change_sprite(t_info *info, int time);
 
 void	manage_event(t_info *info)
 {
-	mlx_hook(info->win, 2, 0, &press_key, info);
-	mlx_hook(info->win, 3, 0, &release_key, info);
-	mlx_hook(info->win, 6, 0, &mouse_move, info);
+	mlx_hook(info->win, KEY_PRESS, 0, &press_key, info);
+	mlx_hook(info->win, KEY_RELEASE, 0, &release_key, info);
+	mlx_hook(info->win, MOUSE_MOVE, 0, &mouse_move, info);
 	mlx_hook(info->win, CLOSE_BUTTON, 0, &finish_game, info);
 	mlx_loop_hook(info->mlx, &no_event, info);
 }

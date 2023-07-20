@@ -6,7 +6,7 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:45:23 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/11 14:42:55 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/20 11:17:50 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static int	no_event(t_info *info);
 
 void	manage_event(t_info *info)
 {
-	mlx_hook(info->win, 2, 0, &press_key, info);
-	mlx_hook(info->win, 3, 0, &release_key, info);
+	mlx_hook(info->win, KEY_PRESS, 0, &press_key, info);
+	mlx_hook(info->win, KEY_RELEASE, 0, &release_key, info);
 	mlx_hook(info->win, CLOSE_BUTTON, 0, &finish_game, info);
 	mlx_loop_hook(info->mlx, &no_event, info);
 }
