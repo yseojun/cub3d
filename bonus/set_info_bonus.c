@@ -6,12 +6,13 @@
 /*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/13 12:22:35 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/20 18:31:44 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "info_bonus.h"
 
+static void	check_file_extension(char *path);
 static void	init_ev(t_info *info);
 static void	set_imgs(t_info *info);
 
@@ -20,12 +21,13 @@ t_info	set_info(char *path)
 	t_info	info;
 	int		fd;
 
-	info.mlx = mlx_init();
-	if (!info.mlx)
-		exit(occur_error(MLX_INIT_FAILED));
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		exit(occur_error(INVALID_FILE));
+	check_file_extension(path);
+	info.mlx = mlx_init();
+	if (!info.mlx)
+		exit(occur_error(MLX_INIT_FAILED));
 	init_ev(&info);
 	set_graphic_info(&info, fd);
 	set_map_info(&info, fd);
@@ -34,6 +36,15 @@ t_info	set_info(char *path)
 	set_sprites(&info);
 	set_imgs(&info);
 	return (info);
+}
+
+static void	check_file_extension(char *path)
+{
+	int start;
+
+	start = ft_strlen(path) - 4;
+	if (ft_strncmp(path + start, ".cub", 4))
+		exit(occur_error(INVALID_FILE_EXTENSION));
 }
 
 static void	init_ev(t_info *info)

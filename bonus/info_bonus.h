@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/20 14:15:51 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:38:01 by rolee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,16 @@
 # define MINIMAP_DIVIER	2
 
 # define INVALID_ARGU "invalid Argument."
-# define MLX_INIT_FAILED "mlx_init() failed."
 # define INVALID_FILE "invalid file path."
+# define INVALID_FILE_EXTENSION "invalid file extension."
+# define MLX_INIT_FAILED "mlx_init() failed."
+# define MALLOC_FAILED "malloc failed."
 # define INVALID_FORMAT "file content format is incorrect."
+# define INVALID_TEXTURE "invalid texture file"
 # define INVALID_RGB "rgb value out of range."
 # define INVALID_MAP "invalid map."
-# define MALLOC_FAILED "malloc failed."
 # define INVALID_WALL "map is not surrounded by walls."
 # define INVALID_PLAYER "map must contain one player."
-# define INVALID_TEXTURE "invalid texture file"
 # define INVALID_MAP_CAHR "map must only contain numbers [0-5], \
 [N,S,W,E] and space."
 
