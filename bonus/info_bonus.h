@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:52:25 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/20 11:21:49 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/20 14:15:51 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ int		get_line_height(t_info *info, t_ray *ray);
 void	set_frame(t_info *info, t_ray *ray, int x, int line_height);
 
 void	display_sprites(t_info *info);
-void	display_each_sprite(t_info *info, t_spr_info spr, int i);
+void	display_each_sprite(t_info *info, t_spr_info spr);
 
 void	display_minimap(t_info *info);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_each_sprite_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:17:01 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/20 11:24:57 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/20 14:15:39 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ static void	put_sprite_color_to_frame(t_info *info, int color, int x, int y);
 static void	draw_sprite_y(t_info *info, t_spr_info spr, int x, int tex_x);
 static int	get_sprite_color(t_spr_info spr, int tex_x, int tex_y);
 
-void	display_each_sprite(t_info *info, t_spr_info spr, int i)
+void	display_each_sprite(t_info *info, t_spr_info spr)
 {
 	int		x;
 	int		tex_x;
-	void	*sprite_frame;
 
 	x = spr.drawstart[X];
 	while (x < spr.drawend[X])
@@ -34,14 +33,13 @@ void	display_each_sprite(t_info *info, t_spr_info spr, int i)
 		}
 		x++;
 	}
-	sprite_frame = info->sprites[i].frame[info->sprites[i].idx].img;
 }
 
 static int	get_sprite_tex_x(t_spr_info spr, int x)
 {
 	int	tex_x;
 
-	tex_x = (int)(256 * (x - (-spr.sprite_width / 2 + spr.sprite_screen_x))
+	tex_x = (int)(256 * (x - spr.drawstart[X])
 			* spr.each->frame->width / spr.sprite_width) / 256;
 	return (tex_x);
 }

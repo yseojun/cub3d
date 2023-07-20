@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:36:50 by rolee             #+#    #+#             */
-/*   Updated: 2023/07/12 17:01:29 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:16:15 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	display_sprites(t_info *info)
 	{
 		calculate_sprite(info, &spr, i);
 		calculrate_sprite_draw(&spr);
-		display_each_sprite(info, spr, i);
+		display_each_sprite(info, spr);
 		i++;
 	}
 }
