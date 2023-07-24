@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/20 18:31:44 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/20 19:58:50 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_info	set_info(char *path)
 
 static void	check_file_extension(char *path)
 {
-	int start;
+	int	start;
 
 	start = ft_strlen(path) - 4;
 	if (ft_strncmp(path + start, ".cub", 4))
