@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolee <rolee@student.42.fr>                +#+  +:+       +#+        */
+/*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:41:36 by seojyang          #+#    #+#             */
-/*   Updated: 2023/07/24 11:21:41 by rolee            ###   ########.fr       */
+/*   Updated: 2023/07/24 11:28:59 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	check_file_extension(char *path)
 	start = ft_strlen(name) - 4;
 	if (!start || ft_strncmp(name + start, ".cub", 4))
 		exit(occur_error(INVALID_FILE_EXTENSION));
-	free(name);
 }
 
 static void	init_ev(t_info *info)
